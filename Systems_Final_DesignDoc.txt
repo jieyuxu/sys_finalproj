@@ -5,8 +5,6 @@ Problem/Description:
 Our project will be a multiplayer Hangman. The game ranges from one to four players. The appointed gamemaster of each round will input a word and the others will guess letter by letter. I’m assuming you know how hangman works. Each time a letter guessed is incorrect, a limb will be chopped off of a little ascii man from legs to head. Please save him before he gets beheaded.  
 
 
-
-
 User Interface:
 Once the program runs, the user running (host) it will be prompted to start a new game (yes or no). Once he/she is prompted, he/she can choose how many people they want in their game room (up to 4). The game cannot start without at least two people. There will be a waiting screen which will go away either when the host starting the game chooses to start (regardless of when the room is full, but must have at least one other player) or the room becomes full. 
 
@@ -16,7 +14,7 @@ Once the game starts, the host will choose a phrase/word for the other players t
 \|/
  |
 / \
-Of of up to 4 players will see a prompt asking him/her whether he/she wants to guess a letter or the entire phrase/word. If he/she guesses a letter correctly, ascii man will not lose a limb. Otherwise, one of ascii man’s precious limbs will be chopped off. As such:
+One of the players will see a prompt asking him/her whether he/she wants to guess a letter or the entire phrase/word. If he/she guesses a letter correctly, ascii man will not lose a limb. Otherwise, one of ascii man’s precious limbs will be chopped off. As such:
  O
 \|/
  |
