@@ -35,8 +35,6 @@ Then a prompt will appear on all screens asking the users if they want to play a
 
 
 Technical Design:
-
-
 * Topics that we will use: Aside from basic function writing in C, the project will deal with forking and creating multiple child processes as the game would allow for more than just one player to connect and play along. The project will include networking layers and server/client checking through handshakes. Also, it would incorporate semaphores to prevent one player from just spamming letters and instead wait for their turn to add a letter. to try and complete the puzzle. In addition, we will used shared memory to keep track of the letters that have been already used and the visual representation of the hangman as he slowly gets sliced away.
 * Breakdown of the Project Roles:
    * Amy Xu: Project Manager
