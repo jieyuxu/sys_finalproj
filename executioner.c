@@ -35,26 +35,25 @@ void Player_Input(){
 
 
 void Display_Word(){
-
-  char *letter = _PUZZLE[cntr];
-
- 
+  char * letter = _PUZZLE;
+  
   while(*letter != '\0'){
-    printf("%c\n", letter);
-    if (strchr(_LETTER_BANK, *letter) == NULL){
-      printf("_");
+  
+
+    if(strchr(_LETTER_BANK, *letter) == NULL){
+      printf(" _ ");
     }
     else{
-      printf("%c\n", letter);
+      printf("%c", *letter);
     }
-    letter++;  
-}
+
+   
+    letter++;
+  }
+
+   printf("\n");
 
     
-}
-
-void displayHangman(){
-  
 }
 
 void Display(){
@@ -62,14 +61,20 @@ void Display(){
 }
 
 
-int main(){
+main(){
 
   Setup();
   Display();
   Player_Input();
   Display();
+  Player_Input();
+  Display();
+  Player_Input();
+  Display();
+  Player_Input();
+  Display();
+ 
 
-  return 0;
+
 
 }
-
