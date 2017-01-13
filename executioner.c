@@ -9,6 +9,7 @@ int _MAX_SIZE = 100;
 char _PUZZLE[100];
 char _LETTER_BANK[25];
 int _LETTER_COUNTER = 0;
+int GRIM_REAPER = 0;
 
 void Setup(){
   fgets(_PUZZLE, _MAX_SIZE, stdin);
@@ -17,21 +18,74 @@ void Setup(){
   printf("Printing the input: <%s>\n", _PUZZLE);
 }
 
+void endGame(){
+  printf("\nASCII MAN'S HEAD WAS CHOPPED OFF. SHAME ON YOU. GET OUT OF HERE!\nExiting...\n");
+  exit(0);
+}
+
+void Display_Man(int c){
+  if (c == 1){
+    printf("\t O\n       \\ | /\n\t |\n\t/\n ");
+  }
+  else if(c == 2){
+    printf("\t O\n       \\ | /\n\t |\n");
+  }
+  else if(c == 3){
+    printf("\t O\n       \\ | /\n");
+  }
+  else if(c==4){
+    printf("\t O\n       \\ |\n");
+  }
+  else if(c == 5){
+    printf("\t O\n       \\\n");
+  }
+  else if(c == 6){
+    printf("\t O\n");
+  }
+  else if (c == 7){
+    endGame();
+  }
+  else
+    printf("\t O\n       \\ | /\n\t |\n\t/ \\\n ");
+}
+
 void Player_Input(){
   char BUFFER[100];
   printf("Please input: ");
   fgets(BUFFER, 100, stdin);
   BUFFER[1] = 0;
+  char * puzzle = _PUZZLE;
   
+
   if(strstr(_LETTER_BANK, BUFFER) == NULL){
     strcat(_LETTER_BANK, BUFFER);
     _LETTER_COUNTER++;
+    if (! strchr(puzzle, BUFFER[0])){
+      GRIM_REAPER++;
+    }
+  }
+
+  else{
+    while (strchr(_LETTER_BANK, BUFFER[0])){
+      printf("letter already guessed. choose another: \n");
+      fgets(BUFFER, 100, stdin);
+      BUFFER[1] = 0;
+    }
+
+    strcat(_LETTER_BANK, BUFFER);
+    _LETTER_COUNTER++;
+
+
+    if (! strchr(puzzle, BUFFER[0])){
+      GRIM_REAPER++;
+    }
   }
   
   printf("The letter bank is currently: <%s>\n", _LETTER_BANK);
   
-  
 }
+
+
 
 
 void Display_Word(){
@@ -56,7 +110,9 @@ void Display_Word(){
     
 }
 
+
 void Display(){
+  Display_Man(GRIM_REAPER);
   Display_Word();
 }
 
@@ -64,17 +120,15 @@ void Display(){
 main(){
 
   Setup();
-  Display();
-  Player_Input();
-  Display();
-  Player_Input();
-  Display();
-  Player_Input();
-  Display();
-  Player_Input();
-  Display();
- 
-
-
-
+  // Display_Man(1);
+  // Display_Man(2);
+  // Display_Man(3);
+  // Display_Man(4);
+  // Display_Man(5);
+  // Display_Man(6);
+  // Display_Man(7);
+  while(1){
+    Display();
+    Player_Input();
+  }
 }

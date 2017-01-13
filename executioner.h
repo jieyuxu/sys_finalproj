@@ -14,5 +14,4 @@ char * tolowercase(char * word);
 int updatecounter(char * word, char letter); //if the guess is incorrect, the 
 
 
-
 #endif
