@@ -3,3 +3,8 @@ ENTRY FORMAT:
   <CHANGES>
   
   Example: amyX -- 2016-01-05 8:04 PM
+
+amyX -- 2016-01-13 12:00 AM
+- got ascii man display to work
+- created new global variable called GRIM_REAPER
+- added new function called endGame that would exit once ascii man is killed
