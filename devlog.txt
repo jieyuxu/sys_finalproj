@@ -8,3 +8,7 @@ amyX -- 2016-01-13 12:00 AM
 - got ascii man display to work
 - created new global variable called GRIM_REAPER
 - added new function called endGame that would exit once ascii man is killed
+
+amyX -- 2016-01-13 12:14 PM
+- implemented code to check if a letter has already been entered
+- created while loop to take care of duplicate letter entering and to allow users to enter in a new letter
