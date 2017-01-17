@@ -12,6 +12,7 @@ int _LETTER_COUNTER = 0;
 int GRIM_REAPER = 0;
 
 void Setup(){
+  printf("Please Input Word: ");
   fgets(_PUZZLE, _MAX_SIZE, stdin);
   char* SPC = strchr(_PUZZLE, '\n');
   *(SPC) = 0;
@@ -34,16 +35,16 @@ void Display_Man(int c){
   else if(c == 3){
     printf("\t O\n       \\ | /\n");
   }
-  else if(c==4){
+  else if(c == 4){
     printf("\t O\n       \\ |\n");
   }
   else if(c == 5){
-    printf("\t O\n       \\\n");
+    printf("\t O\n         |\n");
   }
   else if(c == 6){
     printf("\t O\n");
   }
-  else if (c == 7){
+  else if(c == 7){
     endGame();
   }
   else
@@ -52,7 +53,7 @@ void Display_Man(int c){
 
 void Player_Input(){
   char BUFFER[100];
-  printf("Please input: ");
+  printf("Please input letter: ");
   fgets(BUFFER, 100, stdin);
   BUFFER[1] = 0;
   char * puzzle = _PUZZLE;
@@ -94,14 +95,14 @@ void Display_Word(){
   
   while(*letter != '\0'){
     if(strchr(" ", *letter)){
-      printf("  ");
+      printf(" ");
     }
 
     else if(strchr(_LETTER_BANK, *letter) == NULL){
-      printf(" _ ");
+      printf("_");
     }
     else{
-      printf(" %c ", *letter);
+      printf("%c", *letter);
     }
 
    
@@ -162,3 +163,5 @@ main(){
     checkWin();
   }
 }
+
+
