@@ -20,7 +20,9 @@ void Setup(){
 }
 
 void endGame(){
-  printf("\nASCII MAN'S HEAD WAS CHOPPED OFF. SHAME ON YOU. GET OUT OF HERE!\nExiting...\n");
+  printf("\nASCII MAN'S HEAD WAS CHOPPED OFF. SHAME ON YOU. GET OUT OF HERE!\n");
+  printf("ASCII Man whispers: I will haunt you from the deadddddd\n");
+  printf("The word was: %s \nExiting...\n", _PUZZLE);
   exit(0);
 }
 
@@ -28,21 +30,27 @@ void endGame(){
 void Display_Man(int c){
   if (c == 1){
     printf("\t O\n       \\ | /\n\t |\n\t/\n ");
+    printf("My foot! WHO the HELL just cut off my foot?!? Imma kill 'em!\n");
   }
   else if(c == 2){
     printf("\t O\n       \\ | /\n\t |\n");
+    printf("Well look at that! Now I can't walk. Requesting a wheelchair on aisle terminal.\n");
   }
   else if(c == 3){
     printf("\t O\n       \\ | /\n");
+    printf("BRUH. Ya cut my spine in half! I'm the new Clark Kent after his accident.\n");
   }
   else if(c == 4){
     printf("\t O\n       \\ |\n");
+    printf("Welp. It's just you and me now rightie. No other appendages in our way. We can finally be together. Forever. \n");
   }
   else if(c == 5){
     printf("\t O\n         |\n");
+    printf("No hands now... Does this mean I never have to work again? WOOHOO! *cough* I mean- HELP!\n");
   }
   else if(c == 6){
     printf("\t O\n");
+    printf("I'm only a DAMN HEAD NOW! How am I even still alive...? WHO CARES. DON'T LET ME DIE BASTARD!\n");
   }
   else if(c == 7){
     endGame();
@@ -99,11 +107,11 @@ void Display_Word(){
   
   while(*letter != '\0'){
     if(strchr(" ", *letter)){
-      printf(" ");
+      printf("   ");
     }
 
     else if(strchr(_LETTER_BANK, *letter) == NULL){
-      printf("_");
+      printf(" _ ");
     }
     else{
       printf("%c", *letter);
@@ -145,7 +153,7 @@ void Display(){
 void checkWin(){
   if(Check_Word()){
     Display();
-    printf("\nYOU WIN!!\nExiting...\n");
+    printf("\nYOU WIN!!! ASCII Man lives for another day. That is... until the next game~ ;)\nExiting...\n");
     exit(0);
   }
 }
@@ -167,5 +175,3 @@ main(){
     checkWin();
   }
 }
-
-
