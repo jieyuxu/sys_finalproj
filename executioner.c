@@ -55,6 +55,10 @@ void Player_Input(){
   char BUFFER[100];
   printf("Please input letter: ");
   fgets(BUFFER, 100, stdin);
+
+  if (isupper(BUFFER[0]))
+    BUFFER[0] = tolower(BUFFER[0]);
+  
   BUFFER[1] = 0;
   char * puzzle = _PUZZLE;
   
