@@ -57,10 +57,12 @@ void Display_Man(int c){
 }
 
 void Player_Input(){
-  char BUFFER[100];
+  char BUFFER[2];
   printf("Please input: ");
-  fgets(BUFFER, 100, stdin);
+  fgets(BUFFER, 2, stdin);
   BUFFER[1] = 0;
+  if (isupper(BUFFER[0]))
+    BUFFER[0] = tolower(BUFFER[0]);
   char * puzzle = _PUZZLE;
   
 
