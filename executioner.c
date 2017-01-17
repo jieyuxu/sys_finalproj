@@ -23,12 +23,6 @@ void endGame(){
   exit(0);
 }
 
-void checkWin(){
-  if(Check_Word()){
-    printf("\nYOU WIN!!\nExiting...\n");
-    exit(0);
-  }
-}
 
 void Display_Man(int c){
   if (c == 1){
@@ -57,12 +51,10 @@ void Display_Man(int c){
 }
 
 void Player_Input(){
-  char BUFFER[2];
+  char BUFFER[100];
   printf("Please input: ");
-  fgets(BUFFER, 2, stdin);
+  fgets(BUFFER, 100, stdin);
   BUFFER[1] = 0;
-  if (isupper(BUFFER[0]))
-    BUFFER[0] = tolower(BUFFER[0]);
   char * puzzle = _PUZZLE;
   
 
@@ -101,13 +93,15 @@ void Display_Word(){
   char * letter = _PUZZLE;
   
   while(*letter != '\0'){
-  
+    if(strchr(" ", *letter)){
+      printf("  ");
+    }
 
-    if(strchr(_LETTER_BANK, *letter) == NULL){
+    else if(strchr(_LETTER_BANK, *letter) == NULL){
       printf(" _ ");
     }
     else{
-      printf("%c", *letter);
+      printf(" %c ", *letter);
     }
 
    
@@ -123,9 +117,10 @@ int Check_Word(){
   char * letter = _PUZZLE;
   
   while(*letter != '\0'){
-  
+    if(strchr(" ", *letter)){
+    }  
 
-    if(strchr(_LETTER_BANK, *letter) == NULL){
+    else if(strchr(_LETTER_BANK, *letter) == NULL){
       return 0;
     }
 
@@ -140,6 +135,14 @@ int Check_Word(){
 void Display(){
   Display_Man(GRIM_REAPER);
   Display_Word();
+}
+
+void checkWin(){
+  if(Check_Word()){
+    Display();
+    printf("\nYOU WIN!!\nExiting...\n");
+    exit(0);
+  }
 }
 
 
