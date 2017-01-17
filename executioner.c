@@ -15,12 +15,19 @@ void Setup(){
   fgets(_PUZZLE, _MAX_SIZE, stdin);
   char* SPC = strchr(_PUZZLE, '\n');
   *(SPC) = 0;
-  printf("Printing the input: <%s>\n", _PUZZLE);
+  //printf("Printing the input: <%s>\n", _PUZZLE);
 }
 
 void endGame(){
   printf("\nASCII MAN'S HEAD WAS CHOPPED OFF. SHAME ON YOU. GET OUT OF HERE!\nExiting...\n");
   exit(0);
+}
+
+void checkWin(){
+  if(Check_Word()){
+    printf("\nYOU WIN!!\nExiting...\n");
+    exit(0);
+  }
 }
 
 void Display_Man(int c){
@@ -67,7 +74,7 @@ void Player_Input(){
 
   else{
     while (strchr(_LETTER_BANK, BUFFER[0])){
-      printf("letter already guessed. choose another: \n");
+      printf("Letter already guessed. \nChoose another: ");
       fgets(BUFFER, 100, stdin);
       BUFFER[1] = 0;
     }
@@ -110,6 +117,23 @@ void Display_Word(){
     
 }
 
+int Check_Word(){
+  char * letter = _PUZZLE;
+  
+  while(*letter != '\0'){
+  
+
+    if(strchr(_LETTER_BANK, *letter) == NULL){
+      return 0;
+    }
+
+   
+    letter++;
+  }
+
+   return 1;
+}
+
 
 void Display(){
   Display_Man(GRIM_REAPER);
@@ -130,5 +154,6 @@ main(){
   while(1){
     Display();
     Player_Input();
+    checkWin();
   }
 }
