@@ -59,10 +59,13 @@ void Display_Man(int c){
     printf("\t O\n       \\ | /\n\t |\n\t/ \\\n ");
 }
 
-void Player_Input(){
+void Player_Input( char * j){
   char BUFFER[100];
-  printf("Please input letter: ");
-  fgets(BUFFER, 100, stdin);
+  printf("<%s>\n", j);
+  strcat(BUFFER, j);
+  printf("<%s>\n", BUFFER);
+  //printf("Please input letter: ");
+  //fgets(BUFFER, 100, stdin);
 
   if (isupper(BUFFER[0]))
     BUFFER[0] = tolower(BUFFER[0]);
@@ -158,7 +161,7 @@ void checkWin(){
   }
 }
 
-
+/*
 main(){
 
   Setup();
@@ -175,3 +178,4 @@ main(){
     checkWin();
   }
 }
+*/

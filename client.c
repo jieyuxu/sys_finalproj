@@ -19,10 +19,12 @@ int main( int argc, char *argv[] ) {
 
   sd = client_connect( host );
 
+  //read( sd, buffer, sizeof(buffer) );
+  
   char buffer[MESSAGE_BUFFER_SIZE];
   
   while (1) {
-    printf("enter message: ");
+    printf("Enter Letter: ");
     fgets( buffer, sizeof(buffer), stdin );
     char *p = strchr(buffer, '\n');
     *p = 0;

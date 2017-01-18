@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include "executioner.h"
 
 #include "networking.h"
 
@@ -35,20 +36,30 @@ int main() {
 
 
 void sub_server( int sd ) {
-
+  Setup();
+  Display();
+  
+  
   char buffer[MESSAGE_BUFFER_SIZE];
+  
   while (read( sd, buffer, sizeof(buffer) )) {
 
     printf("[SERVER %d] received: %s\n", getpid(), buffer );
-    process( buffer );
-    write( sd, buffer, sizeof(buffer));    
+    Player_Input( buffer );
+    Display();
+    //write( sd, buffer, sizeof(buffer));    
   }
+
+  
+  
   
 }
 void process( char * s ) {
-
+  /*
   while ( *s ) {
     *s = (*s - 'a' + 13) % 26 + 'a';
     s++;
   }
+  */
+  
 }

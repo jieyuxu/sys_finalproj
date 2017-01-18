@@ -1,17 +1,14 @@
 #ifndef EXECUTIONER
 #define EXECUTIONER
 
-void display();
-void makeman(int c);
-void displayword();
-
-int checkanswer(char * guess);
-int checkletter(char * letter); //checks if is in word bank
-
-int addtobank(char letter);
-char * tolowercase(char * word);
-
-int updatecounter(char * word, char letter); //if the guess is incorrect, the 
+void Setup();
+void endGame();
+void Display_Man(int c);
+void Player_Input();
+void Display_Word();
+int Check_Word();
+void Display();
+void checkWin();
 
 
 #endif
