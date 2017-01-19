@@ -20,19 +20,28 @@ int main() {
     printf("Waiting to connect... \n");
 
     connection = server_connect( sd );
-
-    int f = fork();
-    if ( f == 0 ) {
+    int tpid;
+    int stat = 0;
+    int chpid = fork();
+    if ( chpid == 0 ) {
 
       close(sd);
       sub_server( connection );
       printf("Reached this exit\n");
       x = 0;
-    }
-    else {
+      printf("CLOSING");
       close( connection );
     }
+    else {
+      do { 
+         tpid = wait(&stat);
+         printf("id %d\n", tpid);
+         } while(tpid != -1);
+      } 
   }
+  x = 0;
+  printf("END");
+  exit(0);
   return 0;
 }
 
