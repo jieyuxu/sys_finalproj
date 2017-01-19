@@ -8,7 +8,7 @@ void Player_Input();
 void Display_Word();
 int Check_Word();
 void Display();
-void checkWin();
+int checkWin();
 
 
 #endif

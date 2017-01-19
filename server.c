@@ -11,11 +11,12 @@ void sub_server( int sd );
 
 int main() {
 
+  int x = 1;
   int sd, connection;
 
   sd = server_setup();
     
-  while (1) {
+  while (x) {
     printf("Waiting to connect... \n");
 
     connection = server_connect( sd );
@@ -25,8 +26,8 @@ int main() {
 
       close(sd);
       sub_server( connection );
-
-      exit(0);
+      printf("Reached this exit\n");
+      x = 0;
     }
     else {
       close( connection );
@@ -39,22 +40,21 @@ int main() {
 void sub_server( int sd ) {
   Setup();
   Display();
-  
-  
-  char buffer[MESSAGE_BUFFER_SIZE];
-  
-  while (read( sd, buffer, sizeof(buffer) )) {
 
-    printf("[SERVER %d] received: %s\n", getpid(), buffer );
-    Player_Input( buffer );
-    Display();
-    //write( sd, buffer, sizeof(buffer));    
-  }
-
-  
-  
-  
+    char buffer[MESSAGE_BUFFER_SIZE];
+    
+    while ( checkWin()){
+      
+      read( sd, buffer, sizeof(buffer));
+      printf("[SERVER %d] received: %s\n", getpid(), buffer );
+      Player_Input( buffer );
+      Display();
+      write( sd, buffer, sizeof(buffer));
+     
+    }   
 }
+  
+  
 void process( char * s ) {
   /*
   while ( *s ) {

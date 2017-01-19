@@ -62,7 +62,8 @@ void Display_Man(int c){
 void Player_Input( char * j){
   char BUFFER[100];
   printf("<%s>\n", j);
-  strcat(BUFFER, j);
+  //printf("<%s>\n", BUFFER);
+  strcpy(BUFFER, j);
   //strchr(BUFFER, "\n"); 
   printf("<%s>\n", BUFFER);
   //printf("Please input letter: ");
@@ -154,12 +155,13 @@ void Display(){
   Display_Word();
 }
 
-void checkWin(){
+int checkWin(){
   if(Check_Word()){
     Display();
     printf("\nYOU WIN!!! ASCII Man lives for another day. That is... until the next game~ ;)\nExiting...\n");
-    exit(0);
+    return 0;
   }
+  return 1;
 }
 
 /*
