@@ -32,6 +32,7 @@ int main() {
       printf("CLOSING");
       close( connection );
     }
+    
     else {
       do { 
          tpid = wait(&stat);
@@ -50,17 +51,15 @@ void sub_server( int sd ) {
   Setup();
   Display();
 
-    char buffer[MESSAGE_BUFFER_SIZE];
+  char buffer[MESSAGE_BUFFER_SIZE];
     
-    while ( checkWin()){
-      
-      read( sd, buffer, sizeof(buffer));
-      printf("[SERVER %d] received: %s\n", getpid(), buffer );
-      Player_Input( buffer );
-      Display();
-      write( sd, buffer, sizeof(buffer));
-     
-    }   
+  while ( checkWin()){
+    read( sd, buffer, sizeof(buffer));
+    printf("[SERVER %d] received: %s\n", getpid(), buffer );
+    Player_Input( buffer );
+    Display();
+    write( sd, buffer, sizeof(buffer));
+  }   
 }
   
   
