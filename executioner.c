@@ -63,6 +63,7 @@ void Player_Input( char * j){
   char BUFFER[100];
   printf("<%s>\n", j);
   strcat(BUFFER, j);
+  //strchr(BUFFER, "\n"); 
   printf("<%s>\n", BUFFER);
   //printf("Please input letter: ");
   //fgets(BUFFER, 100, stdin);

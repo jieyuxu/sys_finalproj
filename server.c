@@ -16,6 +16,7 @@ int main() {
   sd = server_setup();
     
   while (1) {
+    printf("Waiting to connect... \n");
 
     connection = server_connect( sd );
 
