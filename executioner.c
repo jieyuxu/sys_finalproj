@@ -11,6 +11,10 @@ char _LETTER_BANK[25];
 int _LETTER_COUNTER = 0;
 int GRIM_REAPER = 0;
 
+void setPuzzle(char * c){
+  strcpy(_PUZZLE, c);
+}
+
 void Setup(){
   printf("Please Input Word: ");
   fgets(_PUZZLE, _MAX_SIZE, stdin);
@@ -59,7 +63,7 @@ void Display_Man(int c){
     printf("\t O\n       \\ | /\n\t |\n\t/ \\\n ");
 }
 
-void Player_Input( char * j){
+int Player_Input( char * j){
   char BUFFER[100];
   printf("<%s>\n", j);
   //printf("<%s>\n", BUFFER);
@@ -86,9 +90,10 @@ void Player_Input( char * j){
 
   else{
     while (strchr(_LETTER_BANK, BUFFER[0])){
-      printf("Letter already guessed. \nChoose another: ");
-      fgets(BUFFER, 100, stdin);
+      printf("Letter already guessed. \nChoose another! ");
+      //fgets(BUFFER, 100, stdin);
       BUFFER[1] = 0;
+      return 0;
     }
 
     strcat(_LETTER_BANK, BUFFER);
@@ -101,6 +106,7 @@ void Player_Input( char * j){
   }
   
   printf("The letter bank is currently: <%s>\n", _LETTER_BANK);
+  return 1;
   
 }
 
