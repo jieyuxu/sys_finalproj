@@ -20,29 +20,19 @@ int main() {
     printf("Waiting to connect... \n");
 
     connection = server_connect( sd );
-    int tpid;
-    int stat = 0;
-    int chpid = fork();
-    if ( chpid == 0 ) {
+
+    int f = fork();
+    if ( f == 0 ) {
 
       close(sd);
       sub_server( connection );
       printf("Reached this exit\n");
       x = 0;
-      printf("CLOSING");
+    }
+    else {
       close( connection );
     }
-    
-    else {
-      do { 
-         tpid = wait(&stat);
-         printf("id %d\n", tpid);
-         } while(tpid != -1);
-      } 
   }
-  x = 0;
-  printf("END");
-  exit(0);
   return 0;
 }
 
@@ -50,19 +40,21 @@ int main() {
 void sub_server( int sd ) {
   Setup();
   Display();
-
+  write(sd, _PUZZLE, sizeof(_PUZZLE));
+  
   char buffer[MESSAGE_BUFFER_SIZE];
-    
+  
   while ( checkWin()){
+    
     read( sd, buffer, sizeof(buffer));
     printf("[SERVER %d] received: %s\n", getpid(), buffer );
     Player_Input( buffer );
     Display();
-    write( sd, buffer, sizeof(buffer));
+    write( sd, buffer, sizeof(buffer));    
   }   
 }
   
-  
+
 void process( char * s ) {
   /*
   while ( *s ) {
