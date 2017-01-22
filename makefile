@@ -1,10 +1,21 @@
-GCC = gcc -g
+GCC = gcc -c
 
-all: server
+all: server client
 
-server: executioner.c executioner.h
-	$(GCC) -g -o server executioner.c executioner.h server.c networking.c networking.h
+client: client.o networking.o executioner.o
+	gcc -o client client.o networking.o executioner.o
 
-client: executioner.c executioner.h
-	$(GCC) -g -o client executioner.c executioner.h client.c networking.c networking.h
+server: server.o networking.o executioner.o
+	gcc -o server server.o networking.o executioner.o
 
+server.o: executioner.c executioner.h networking.h server.c 
+	$(GCC) server.c
+
+client.o: client.c executioner.c executioner.h networking.h
+	$(GCC) client.c
+
+networking.o: networking.c networking.h
+	$(GCC) networking.c
+
+executioner.o: executioner.c executioner.h
+	$(GCC) executioner.c
