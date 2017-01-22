@@ -12,3 +12,6 @@ amyX -- 2016-01-13 12:00 AM
 amyX -- 2016-01-13 12:14 PM
 - implemented code to check if a letter has already been entered
 - created while loop to take care of duplicate letter entering and to allow users to enter in a new letter
+
+amyX -- 2017-01-22 5:29 PM
+- update makefile

@@ -12,26 +12,38 @@ void sub_server( int sd );
 int main() {
 
   int x = 1;
+  int f;
   int sd, connection;
 
+  char buffer[MESSAGE_BUFFER_SIZE];
+
   sd = server_setup();
-    
+  printf("Waiting to connect... \n");
+
   while (x) {
-    printf("Waiting to connect... \n");
 
     connection = server_connect( sd );
 
-    int f = fork();
-    if ( f == 0 ) {
+    printf("start game? (y/n)? ");
+    fgets(buffer, sizeof(buffer), stdin);
 
-      close(sd);
-      sub_server( connection );
-      printf("Reached this exit\n");
-      x = 0;
+    printf("%s\n", buffer);
+
+    if (strchr(buffer, 'y')){
+      f = fork();
+      if ( f == 0 ) {
+          close(sd);
+          sub_server( connection );
+          printf("Reached this exit\n");
+          x = 0;
+      }
+      
+      else {
+        close( connection );
+      }
     }
-    else {
-      close( connection );
-    }
+    
+    
   }
   return 0;
 }

@@ -21,17 +21,21 @@ int server_setup() {
   
   int sd;
   int i;
+  int optval = 1;
   
   sd = socket( AF_INET, SOCK_STREAM, 0 );
+
   error_check( sd, "server socket" );
   
   struct sockaddr_in sock;
   sock.sin_family = AF_INET;
   sock.sin_addr.s_addr = INADDR_ANY;
   sock.sin_port = htons(9001);
+  
+  setsockopt(sd, SOL_SOCKET, SO_REUSEADDR, &optval, sizeof(optval));
+
   i = bind( sd, (struct sockaddr *)&sock, sizeof(sock) );
   error_check( i, "server bind" );
-  
   return sd;
 }
 
