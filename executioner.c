@@ -10,6 +10,7 @@ char _PUZZLE[100];
 char _LETTER_BANK[25];
 int _LETTER_COUNTER = 0;
 int GRIM_REAPER = 0;
+char character_input[5];
 int character = 1;
 
 void setPuzzle(char * c){
@@ -28,6 +29,10 @@ void Setup(){
  ░  ░░ ░  ░   ▒     ░   ░ ░ ░ ░   ░      ░   ▒   ░  ░  ░ ░         ▒ ░ ▒ ░░      ░     ░   ▒     ░   ░ ░ \n \
  ░  ░  ░      ░  ░        ░       ░          ░  ░      ░ ░ ░       ░   ░         ░         ░  ░        ░ \n \
                                                          ░                                               \n");
+  //printf("Would you like to kill a man? Or a dog? \n \t \t (Press m)   (Press d)");
+  //fgets(character_input, 5, stdin);
+  //if (strchr(character_input, 'd'))
+          //character = 0;
   printf("Please Input Word: ");
   fgets(_PUZZLE, _MAX_SIZE, stdin);
   char* SPC = strchr(_PUZZLE, '\n');
@@ -77,23 +82,23 @@ void Display_Man(int c){
 
 void Display_Dog(int c){
   if (c == 1){
-    printf("^..^     / \n/_/\_____/ \n   /\\  / \n  /  \\/ \n");
+    printf("^..^     / \n/_/\\_____/ \n   /\\  / \n  /  \\/ \n");
     printf("My foot! WHO the WOOF just ate me foot?!? I'll steal their squishy toy! \n");
   }
   else if(c == 2){
-    printf("^..^     / \n/_/\_____/ \n   /\\  \n  /  \\\n");
+    printf("^..^     / \n/_/\\_____/ \n   /\\  \n  /  \\\n");
     printf("Well look at that! Now I have no hind legs. I'm perpetually sitting. More treats for me!\n");
   }
   else if(c == 3){
-    printf("^..^     / \n/_/\_____/ \n   /   \n  /  \n");
+    printf("^..^     / \n/_/\\_____/ \n   /   \n  /  \n");
     printf("With only one paw left I can still shake master's hand! I am still perfect Ascii Doggo! \n");
   }
   else if(c == 4){
-    printf("^..^     / \n/_/\_____/ \n");
+    printf("^..^     / \n/_/\\_____/ \n");
     printf("Welp. It's just you and me now tail. Though I can no longer chase you, I will get you somehow! \n");
   }
   else if(c == 5){
-    printf("^..^ \n/_/\_____ \n");
+    printf("^..^ \n/_/\\_____ \n");
     printf("TAILIE! NOOOOOO! That was the last tail! You better be prepared to get sent to the Pound bucko! \n");
   }
   else if(c == 6){
@@ -104,7 +109,7 @@ void Display_Dog(int c){
       //endGame();
   }
   else
-    printf("^..^     / \n/_/\_____/ \n   /\\  /\\ \n  /  \\/  \\ \n");
+    printf("^..^     / \n/_/\\_____/ \n   /\\  /\\ \n  /  \\/  \\ \n");
 }
 
 int Player_Input( char * j){
