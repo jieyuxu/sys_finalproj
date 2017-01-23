@@ -10,6 +10,7 @@ char _PUZZLE[100];
 char _LETTER_BANK[25];
 int _LETTER_COUNTER = 0;
 int GRIM_REAPER = 0;
+int character = 1;
 
 void setPuzzle(char * c){
   strcpy(_PUZZLE, c);
@@ -71,6 +72,38 @@ void Display_Man(int c){
   }
   else
     printf("\t O\n       \\ | /\n\t |\n\t/ \\\n ");
+}
+
+void Display_Dog(int c){
+  if (c == 1){
+    printf("^..^     / \n/_/\_____/ \n   /\\  / \n  /  \\/ \n");
+    printf("My foot! WHO the WOOF just ate me foot?!? I'll steal their squishy toy! \n");
+  }
+  else if(c == 2){
+    printf("^..^     / \n/_/\_____/ \n   /\\  \n  /  \\\n");
+    printf("Well look at that! Now I have no hind legs. I'm perpetually sitting. More treats for me!\n");
+  }
+  else if(c == 3){
+    printf("^..^     / \n/_/\_____/ \n   /   \n  /  \n");
+    printf("With only one paw left I can still shake master's hand! I am still perfect Ascii Doggo! \n");
+  }
+  else if(c == 4){
+    printf("^..^     / \n/_/\_____/ \n");
+    printf("Welp. It's just you and me now tail. Though I can no longer chase you, I will get you somehow! \n");
+  }
+  else if(c == 5){
+    printf("^..^ \n/_/\_____ \n");
+    printf("TAILIE! NOOOOOO! That was the last tail! You better be prepared to get sent to the Pound bucko! \n");
+  }
+  else if(c == 6){
+    printf("^..^ \n/_/ \n");
+    printf("I'm only a DAMN HEAD NOW! How can I still woof...? WHO CARES. PLZ DON'T LET ME DIE MASTER! *maximum cuteness lvl puppy eyes activated*\n");
+  }
+  else if(c == 7){
+      //endGame();
+  }
+  else
+    printf("^..^     / \n/_/\_____/ \n   /\\  /\\ \n  /  \\/  \\ \n");
 }
 
 int Player_Input( char * j){
@@ -167,7 +200,10 @@ int Check_Word(){
 
 
 void Display(){
-  Display_Man(GRIM_REAPER);
+  if (character)
+    Display_Man(GRIM_REAPER);
+  else 
+    Display_Dog(GRIM_REAPER);
   Display_Word();
 }
 
