@@ -9,6 +9,8 @@
 #include <unistd.h>
 #include <arpa/inet.h>
 
+
+
 void error_check( int i, char *s ) {
   if ( i < 0 ) {
     printf("%d\n", i);
@@ -29,7 +31,7 @@ int server_setup() {
   
   struct sockaddr_in sock;
   sock.sin_family = AF_INET;
-  sock.sin_addr.s_addr = INADDR_ANY;
+  sock.sin_addr.s_addr = inet_addr("149.89.150.107");
   sock.sin_port = htons(9001);
   
   setsockopt(sd, SOL_SOCKET, SO_REUSEADDR, &optval, sizeof(optval));

@@ -44,3 +44,6 @@ miaO -- 2017-01-22 11:24 PM
 - added title display in beginning of game 
 - added option for Ascii dog
 - added Ascii dog appendage losses and dialogue prompts
+
+amyX -- 2017-01-22 11:40 PM
+- Implemented basic code for server to accept multiple clients
