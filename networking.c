@@ -59,6 +59,7 @@ int server_connect(int sd) {
 
 int client_connect( char *host ) {
   int sd, i;
+  int port = 8888;
   
   sd = socket( AF_INET, SOCK_STREAM, 0 );
   error_check( sd, "client socket" );
@@ -66,7 +67,7 @@ int client_connect( char *host ) {
   struct sockaddr_in sock;
   sock.sin_family = AF_INET;
   inet_aton( host, &(sock.sin_addr));
-  sock.sin_port = htons(9001);
+  sock.sin_port = htons((unsigned short)port);
   
   printf("[client] connecting to: %s\n", host );
   i = connect( sd, (struct sockaddr *)&sock, sizeof(sock) );

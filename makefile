@@ -1,21 +1,25 @@
 GCC = gcc -c
 
-all: server client
+all: selectserv selectclient
 
-client: client.o networking.o executioner.o
-	gcc -o client client.o networking.o executioner.o
+selectclient: selectclient.o networking.o executioner.o
+	gcc -o client selectclient.o networking.o executioner.o
 
-server: server.o networking.o executioner.o
-	gcc -o server server.o networking.o executioner.o
+selectserv: selectserv.o networking.o executioner.o
+	gcc -o server selectserv.o networking.o executioner.o
 
-server.o: executioner.c executioner.h networking.h server.c 
-	$(GCC) server.c
+selectserv.o: executioner.c executioner.h networking.h selectserv.c 
+	$(GCC) selectserv.c
 
-client.o: client.c executioner.c executioner.h networking.h
-	$(GCC) client.c
+selectclient.o: selectclient.c executioner.c executioner.h networking.h
+	$(GCC) selectclient.c
 
 networking.o: networking.c networking.h
 	$(GCC) networking.c
 
 executioner.o: executioner.c executioner.h
 	$(GCC) executioner.c
+
+clean:
+	rm *.o
+	rm *~
