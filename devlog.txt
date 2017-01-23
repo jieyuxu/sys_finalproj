@@ -4,6 +4,13 @@ ENTRY FORMAT:
   
   Example: amyX -- 2016-01-05 8:04 PM
 
+
+shaikA -- 2016-01-12 8:15 PM
+-Letter_Bank finished
+-Core game done, requires end conditions
+-Input fxn finished
+-Modfying letter bank fxns finished
+
 amyX -- 2016-01-13 12:00 AM
 - got ascii man display to work
 - created new global variable called GRIM_REAPER
@@ -12,6 +19,23 @@ amyX -- 2016-01-13 12:00 AM
 amyX -- 2016-01-13 12:14 PM
 - implemented code to check if a letter has already been entered
 - created while loop to take care of duplicate letter entering and to allow users to enter in a new letter
+
+shaikA -- 2016-01-19 4:26 PM
+-Server blocks on inputs from client
+-Client now blocks on Setup() in server
+-Server runs Executioner fxns using client's input
+-Server properly displays hangman
+-Client can handle duplicate letters
+
+shaikA -- 2016-01-20 4:04 PM
+ -Client can now display image
+ -Client runs through whole game
+ -Client now stores the inputed value
+ -Client now stores letter bank
+ -Client sends info back to server for update
+ -Server sends info directly out to clients
+ -Updated Executioner.c Letter_Input() to return proper value
+ -Letter_Input() now is compatible client
 
 amyX -- 2017-01-22 5:29 PM
 - update makefile
