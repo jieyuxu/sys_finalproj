@@ -10,6 +10,7 @@ char _PUZZLE[100];
 char _LETTER_BANK[25];
 int _LETTER_COUNTER = 0;
 int GRIM_REAPER = 0;
+char character_input[5];
 int character = 1;
 
 void setPuzzle(char * c){
@@ -29,6 +30,9 @@ void Setup(){
  ░  ░  ░      ░  ░        ░       ░          ░  ░      ░ ░ ░       ░   ░         ░         ░  ░        ░ \n \
                                                          ░                                               \n");
   //printf("Would you like to kill a man? Or a dog? \n \t \t (Press m)   (Press d)");
+  //fgets(character_input, 5, stdin);
+  //if (strchr(character_input, 'd'))
+          //character = 0;
   printf("Please Input Word: ");
   fgets(_PUZZLE, _MAX_SIZE, stdin);
   char* SPC = strchr(_PUZZLE, '\n');
