@@ -3,8 +3,10 @@
 #include <string.h>
 #include <unistd.h>
 #include "executioner.h"
-
+#include <sys/socket.h>
 #include "networking.h"
+#include <sys/types.h>
+#include <netinet/in.h>
 
 void process( char * s );
 void sub_server( int sd );
@@ -20,30 +22,21 @@ int main() {
   sd = server_setup();
   printf("Waiting to connect... \n");
 
-  while (x) {
-
+  while (1) {
     connection = server_connect( sd );
-
-    printf("start game? (y/n)? ");
-    fgets(buffer, sizeof(buffer), stdin);
-
-    printf("%s\n", buffer);
-
-    if (strchr(buffer, 'y')){
-      f = fork();
-      if ( f == 0 ) {
-          close(sd);
-          sub_server( connection );
-          printf("Reached this exit\n");
-          x = 0;
-      }
-      
-      else {
-        close( connection );
-      }
+    //printf("start game? (y/n)? ");
+    //fgets(buffer, sizeof(buffer), stdin);
+    // if (strchr(buffer, 'y')){
+    int pid = fork();
+    if ( pid == 0 ) {
+      close(sd);
+      sub_server( connection );
+      printf("Reached this exit\n");
+    }        
+    else {
+      close( connection );
     }
-    
-    
+    // }
   }
   return 0;
 }
@@ -67,12 +60,12 @@ void sub_server( int sd ) {
 }
   
 
-void process( char * s ) {
-  /*
-  while ( *s ) {
-    *s = (*s - 'a' + 13) % 26 + 'a';
-    s++;
-  }
-  */
+// void process( char * s ) {
   
-}
+//   while ( *s ) {
+//     *s = (*s - 'a' + 13) % 26 + 'a';
+//     s++;
+//   }
+  
+  
+// }

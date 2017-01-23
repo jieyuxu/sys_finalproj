@@ -41,10 +41,9 @@ int server_setup() {
 
 int server_connect(int sd) {
   int connection, i;
-
-  i = listen(sd, 1);
   error_check( i, "server listen" );
-  
+  i = listen(sd, 5);
+
   struct sockaddr_in sock1;
   unsigned int sock1_len = sizeof(sock1);
   connection = accept( sd, (struct sockaddr *)&sock1, &sock1_len );
