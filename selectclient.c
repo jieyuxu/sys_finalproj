@@ -21,31 +21,34 @@ int main( int argc, char *argv[] ) {
 
   char buffer[MESSAGE_BUFFER_SIZE];
   
-  // while (1) {
-  //   Display();
-  //   printf("Enter Letter: ");
-  //   fgets( buffer, sizeof(buffer), stdin );
-  //   char *p = strchr(buffer, '\n');
-  //   *p = 0;
-
-  //   if(Player_Input(buffer)){
-    
-  //     send( sd, buffer, 256, 0);
-  //     recv( sd, buffer, 256, 0 );
-  //     //printf( "received: %s\n", buffer );
-  //   }
-    
-  // }
+  read( sd, buffer, sizeof(buffer) );
+  setPuzzle(buffer);
+  
   while (1) {
-      printf("enter message: ");
-      fgets( buffer, sizeof(buffer), stdin );
-      char *p = strchr(buffer, '\n');
-      *p = 0;
+    Display();
+    printf("Enter Letter: ");
+    fgets( buffer, sizeof(buffer), stdin );
+    char *p = strchr(buffer, '\n');
+    *p = 0;
+
+    if(Player_Input(buffer)){
     
-      write( sd, buffer, sizeof(buffer) );
-      read( sd, buffer, sizeof(buffer) );
-      printf( "received: %s\n", buffer );
+      send( sd, buffer, 256, 0);
+      recv( sd, buffer, 256, 0 );
+      //printf( "received: %s\n", buffer );
     }
+    
+  }
+  /* while (1) { */
+  /*     printf("enter message: "); */
+  /*     fgets( buffer, sizeof(buffer), stdin ); */
+  /*     char *p = strchr(buffer, '\n'); */
+  /*     *p = 0; */
+    
+  /*     write( sd, buffer, sizeof(buffer) ); */
+  /*     read( sd, buffer, sizeof(buffer) ); */
+  /*     printf( "received: %s\n", buffer ); */
+  /*   } */
   
   return 0;
 }
