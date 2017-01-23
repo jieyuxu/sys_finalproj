@@ -148,7 +148,7 @@ int main(int argc, char **argv) {
   notdone = 1;
   connectcnt = 0;
   printf("server> ");
-  fflush(stdout);
+  // fflush(stdout);
 
   /* 
    * main loop: wait for connection request or stdin command.
@@ -167,7 +167,7 @@ int main(int argc, char **argv) {
     FD_SET(parentfd, &readfds); /* add socket fd */
     FD_SET(0, &readfds);        /* add stdin fd (0) */
     if (select(parentfd+1, &readfds, 0, 0, 0) < 0) {
-      printf("printf in select");
+      printf("error in select");
     }
 
   //   /* if the user has entered a command, process it */
