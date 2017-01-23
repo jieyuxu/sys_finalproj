@@ -39,3 +39,8 @@ shaikA -- 2016-01-20 4:04 PM
 
 amyX -- 2017-01-22 5:29 PM
 - update makefile
+
+miaO -- 2017-01-22 11:24 PM
+- added title display in beginning of game 
+- added option for Ascii dog
+- added Ascii dog appendage losses and dialogue prompts
