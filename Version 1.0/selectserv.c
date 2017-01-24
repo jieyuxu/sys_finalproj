@@ -23,8 +23,10 @@ char * puzzle;
 
 
 void sub_server( int sd ) {
-  //Setup();
   Display();
+  if (isupper(_PUZZLE))
+    tolower(_PUZZLE);
+
   write(sd, _PUZZLE, sizeof(_PUZZLE));
   
   char buffer[MESSAGE_BUFFER_SIZE];
@@ -33,6 +35,8 @@ void sub_server( int sd ) {
     
     read( sd, buffer, sizeof(buffer));
     printf("[SERVER %d] received: %s\n", getpid(), buffer );
+    if (isupper(buffer))
+      tolower(buffer);
     Player_Input( buffer );
     Display();
     write( sd, buffer, sizeof(buffer));    
@@ -42,7 +46,7 @@ void sub_server( int sd ) {
 
 int main(int argc , char *argv[]){
     int opt = TRUE;
-    int master_socket , addrlen , new_socket , client_socket[30] , max_clients = 1  , activity, i , valread , sd, clients;
+    int master_socket , addrlen , new_socket , client_socket[30] , max_clients = 2  , activity, i , valread , sd, clients;
     int max_sd;
     clients = 0;
     struct sockaddr_in address;
@@ -133,6 +137,7 @@ int main(int argc , char *argv[]){
             if ((new_socket = accept(master_socket, (struct sockaddr *)&address, (socklen_t*)&addrlen))<0){
                 perror("accept");
                 exit(EXIT_FAILURE);
+                clients--;
             }
             clients++;
 
@@ -141,10 +146,6 @@ int main(int argc , char *argv[]){
             printf("New connection , socket fd is %d , ip is : %s , port : %d \n" , new_socket , inet_ntoa(address.sin_addr) , ntohs(address.sin_port));
         
             //send new connection greeting message
-            // if( send(new_socket, message, strlen(message), 0) != strlen(message) ) {
-            //     perror("send");
-            // }
-             
             puts("Welcome message sent successfully");
             
               
@@ -154,31 +155,14 @@ int main(int argc , char *argv[]){
                 if( client_socket[i] == 0 ){
                     client_socket[i] = new_socket;
                     printf("Adding to list of sockets as %d\n" , i);
-		    sd = client_socket[i];
-		    sub_server(sd);
-                     
-		            break;
+        		    sd = client_socket[i];
+        		    sub_server(sd);
+                             
+        		    break;
                 }
             }
-
-	    
 	    
         }
-
-        //no more adding
-
-        //fgets(buffer, sizeof(buffer), stdin);
-        //printf("the buffer: %s", buffer);
-        // strcpy(buffer, cat);
-
-        
-        /*
-        for (i = 0; i < max_clients; i++) {
-            sd = client_socket[i];
-            send(sd, buffer, 200, 0);
-        }
-	*/
-        
 
         //else its some IO operation on some other socket :)
         for (i = 0; i < max_clients; i++) {
@@ -200,23 +184,9 @@ int main(int argc , char *argv[]){
                 //Echo back the message that came in
                 else{
                     //set the string terminating NULL byte on the end of the data read
-		  //char * sendy = Player_Input(buffer);
-		  printf("I am here\n");
+		          printf("I am here\n");
 
-		  sub_server(sd);
-		  // Display();
-		  // write(sd,_PUZZLE,sizeof(_PUZZLE));
-                    //buffer[valread] = '\0';
-                    //WHAT TO DO IF CLIENT SENDS STUFF BACK
-                    //printf("Received: %s", buffer);
-                    
-                    //printf("sendy: %s\n", sendy);
-                    //send(sd , sendy , 200 , 0 );
-                   
-		    //sub_server(sd);
-		    //Setup();
-		    //Display();
-		
+		          sub_server(sd);
                 }
             }
         }
@@ -224,20 +194,3 @@ int main(int argc , char *argv[]){
       
     return 0;
 } 
-
-// void sub_server( int sd ) {
-//   Setup();
-//   Display();
-//   write(sd, _PUZZLE, sizeof(_PUZZLE));
-  
-//   char buffer[MESSAGE_BUFFER_SIZE];
-  
-//   while ( checkWin()){
-    
-//     read( sd, buffer, sizeof(buffer));
-//     printf("[SERVER %d] received: %s\n", getpid(), buffer );
-//     Player_Input( buffer );
-//     Display();
-//     write( sd, buffer, sizeof(buffer));    
-//   }   
-// }

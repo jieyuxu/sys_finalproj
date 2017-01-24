@@ -18,6 +18,7 @@ void setPuzzle(char * c){
 }
 
 void Setup(){
+  int i;
    printf(" \n \
  ██░ ██  ▄▄▄      ███▄    █   ▄████     ▄▄▄        ██████ ▄████▄   ██▓ ██▓ ███▄ ▄███▓ ▄▄▄      ███▄    █\n \ 
 ▓██░ ██▒▒████▄    ██ ▀█   █  ██▒ ▀█▒   ▒████▄    ▒██    ▒▒██▀ ▀█  ▓  ▒▓  ▒▓██▒▀█▀ ██▒▒████▄    ██ ▀█   █ \n \
@@ -37,7 +38,10 @@ void Setup(){
   fgets(_PUZZLE, _MAX_SIZE, stdin);
   char* SPC = strchr(_PUZZLE, '\n');
   *(SPC) = 0;
-  
+
+  for(i = 0; _PUZZLE[i]; i++){
+    _PUZZLE[i] = tolower(_PUZZLE[i]);
+  }
 }
 
 void endGame(){
@@ -50,27 +54,27 @@ void endGame(){
 
 void Display_Man(int c){
   if (c == 1){
-    printf("\t O\n       \\ | /\n\t |\n\t/\n ");
+    printf("\n\t O\n       \\ | /\n\t |\n\t/\n ");
     printf("My foot! WHO the HELL just cut off my foot?!? Imma kill 'em!\n");
   }
   else if(c == 2){
-    printf("\t O\n       \\ | /\n\t |\n");
+    printf("\n\t O\n       \\ | /\n\t |\n");
     printf("Well look at that! Now I can't walk. Requesting a wheelchair on aisle terminal.\n");
   }
   else if(c == 3){
-    printf("\t O\n       \\ | /\n");
+    printf("\n\t O\n       \\ | /\n");
     printf("BRUH. Ya cut my spine in half! I'm the new Clark Kent after his accident.\n");
   }
   else if(c == 4){
-    printf("\t O\n       \\ |\n");
+    printf("\n\t O\n       \\ |\n");
     printf("Welp. It's just you and me now rightie. No other appendages in our way. We can finally be together. Forever. \n");
   }
   else if(c == 5){
-    printf("\t O\n         |\n");
+    printf("\n\t O\n         |\n");
     printf("No hands now... Does this mean I never have to work again? WOOHOO! *cough* I mean- HELP!\n");
   }
   else if(c == 6){
-    printf("\t O\n");
+    printf("\n\t O\n");
     printf("I'm only a DAMN HEAD NOW! How am I even still alive...? WHO CARES. DON'T LET ME DIE BASTARD!\n");
   }
   else if(c == 7){
@@ -115,17 +119,10 @@ void Display_Dog(int c){
 
 
 int Player_Input( char * j){
+  if (isupper(j))
+    tolower(j);
   char BUFFER[100];
-  printf("<%s>\n", j);
-  //printf("<%s>\n", BUFFER);                                        
-  strcpy(BUFFER, j);
-  //strchr(BUFFER, "\n");                                                                                                                                                                                 
-  printf("<%s>\n", BUFFER);
-  //printf("Please input letter: ");                                                                                                                                                                       
-  //fgets(BUFFER, 100, stdin);                                                                                                                                                                             
-
-  if (isupper(BUFFER[0]))
-    BUFFER[0] = tolower(BUFFER[0]);
+  strcpy(BUFFER, j);                                                                                                                                                                                                                                                                                                                                                    
 
   BUFFER[1] = 0;
   char * puzzle = _PUZZLE;
@@ -141,8 +138,7 @@ int Player_Input( char * j){
 
   else{
     while (strchr(_LETTER_BANK, BUFFER[0])){
-      printf("Letter already guessed. \nChoose another! ");
-      //fgets(BUFFER, 100, stdin);                                                                                                                                                                          
+      printf("Letter already guessed. \nChoose another! ");                                                                                                                                                                        
       BUFFER[1] = 0;
       return 0;
     }
@@ -160,55 +156,6 @@ int Player_Input( char * j){
   return 1;
 
 }
-
-
-/* char * Player_Input(char * j){ */
-/*   char BUFFER[100]; */
-/*   //printf("<%s>\n", j); */
-/*   //printf("<%s>\n", BUFFER); */
-/*   strcpy(BUFFER, j); */
-/*   //strchr(BUFFER, "\n");  */
-/*   //printf("<%s>\n", BUFFER); */
-/*   //printf("Please input letter: "); */
-/*   //fgets(BUFFER, 100, stdin); */
-
-/*   // if (isupper(BUFFER[0])) */
-/*   //   BUFFER[0] = tolower(BUFFER[0]); */
-  
-/*   BUFFER[1] = 0; */
-/*   // char * puzzle = ans; */
-  
-
-/*   if(strstr(_LETTER_BANK, BUFFER) == NULL){ */
-/*     strcat(_LETTER_BANK, BUFFER); */
-/*     //_LETTER_COUNTER++; */
-/*     if (! strchr(_PUZZLE, BUFFER[0])){ */
-/*       GRIM_REAPER++; */
-/*     } */
-/*   } */
-
-/*   else{ */
-/*     while (strchr(_LETTER_BANK, BUFFER[0])){ */
-/*       printf("Letter already guessed. \nChoose another! "); */
-/*       //fgets(BUFFER, 100, stdin); */
-/*       BUFFER[1] = 0; */
-/*       return 0; */
-/*     } */
-
-/*     strcat(_LETTER_BANK, BUFFER); */
-/*     //_LETTER_COUNTER++; */
-
-
-/*     if (! strchr(_PUZZLE, BUFFER[0])){ */
-/*       GRIM_REAPER++; */
-/*     } */
-/*   } */
-  
-/*   printf("The letter bank is currently: <%s>\n", _LETTER_BANK); */
-/*   return _LETTER_BANK; */
-  
-/* } */
-
 
 
 
@@ -291,21 +238,4 @@ int checkWinServer(char * ans, char * bank){
   return 1;
 }
 
-/*
-main(){
-
-  Setup();
-  // Display_Man(1);
-  // Display_Man(2);
-  // Display_Man(3);
-  // Display_Man(4);
-  // Display_Man(5);
-  // Display_Man(6);
-  // Display_Man(7);
-  while(1){
-    Display();
-    Player_Input();
-    checkWin();
-  }
-}
-*/
+          
