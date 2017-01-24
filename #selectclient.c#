@@ -24,9 +24,6 @@ int main( int argc, char *argv[] ) {
   strcpy(buffer,host);
   
   write(sd, buffer, sizeof(buffer));
-
-  read( sd, buffer, sizeof(buffer) );
-  printf("<%s>\n", buffer);
   
   read( sd, buffer, sizeof(buffer) );
   setPuzzle(buffer);
@@ -46,6 +43,11 @@ int main( int argc, char *argv[] ) {
     }
     
   }
+
+
+
+
+  
   /* while (1) { */
   /*     printf("enter message: "); */
   /*     fgets( buffer, sizeof(buffer), stdin ); */
