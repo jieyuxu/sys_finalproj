@@ -217,7 +217,7 @@ int main(int argc , char *argv[]){
                 else{
                     //set the string terminating NULL byte on the end of the data read
                     buffer[valread] = '\0';
-                    //WHAT TO DO IF CLIENT SENDS STUFF BACK
+                    //WHAT TO DO IF CLIENT SENDS STUFF BACK!
                     printf("Received: %s", buffer);
                     //Player_Input(buffer, SPC);
                     send(sd , buffer , strlen(buffer) , 0 );
