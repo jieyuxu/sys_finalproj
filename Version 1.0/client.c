@@ -17,13 +17,9 @@ int main( int argc, char *argv[] ) {
 
   int sd;
 
-  sd = client_connect( host );
-
-  //read( sd, buffer, sizeof(buffer) );                                                                                                                                                                     
+  sd = client_connect( host );                                                                                                                                                                  
 
   char buffer[MESSAGE_BUFFER_SIZE];
-
-  //write(sd, 'hello', 6);
   
   //Reading for Setup
   printf("Reading for input 1\n");
