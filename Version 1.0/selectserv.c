@@ -24,6 +24,9 @@ char * puzzle;
 
 void sub_server( int sd ) {
   Display();
+  if (isupper(_PUZZLE))
+    tolower(_PUZZLE);
+
   write(sd, _PUZZLE, sizeof(_PUZZLE));
   
   char buffer[MESSAGE_BUFFER_SIZE];
@@ -32,6 +35,8 @@ void sub_server( int sd ) {
     
     read( sd, buffer, sizeof(buffer));
     printf("[SERVER %d] received: %s\n", getpid(), buffer );
+    if (isupper(buffer))
+      tolower(buffer);
     Player_Input( buffer );
     Display();
     write( sd, buffer, sizeof(buffer));    
@@ -41,7 +46,7 @@ void sub_server( int sd ) {
 
 int main(int argc , char *argv[]){
     int opt = TRUE;
-    int master_socket , addrlen , new_socket , client_socket[30] , max_clients = 1  , activity, i , valread , sd, clients;
+    int master_socket , addrlen , new_socket , client_socket[30] , max_clients = 2  , activity, i , valread , sd, clients;
     int max_sd;
     clients = 0;
     struct sockaddr_in address;
@@ -132,6 +137,7 @@ int main(int argc , char *argv[]){
             if ((new_socket = accept(master_socket, (struct sockaddr *)&address, (socklen_t*)&addrlen))<0){
                 perror("accept");
                 exit(EXIT_FAILURE);
+                clients--;
             }
             clients++;
 
@@ -149,10 +155,10 @@ int main(int argc , char *argv[]){
                 if( client_socket[i] == 0 ){
                     client_socket[i] = new_socket;
                     printf("Adding to list of sockets as %d\n" , i);
-		    sd = client_socket[i];
-		    sub_server(sd);
-                     
-		    break;
+        		    sd = client_socket[i];
+        		    sub_server(sd);
+                             
+        		    break;
                 }
             }
 	    
@@ -178,9 +184,9 @@ int main(int argc , char *argv[]){
                 //Echo back the message that came in
                 else{
                     //set the string terminating NULL byte on the end of the data read
-		  printf("I am here\n");
+		          printf("I am here\n");
 
-		  sub_server(sd);
+		          sub_server(sd);
                 }
             }
         }
