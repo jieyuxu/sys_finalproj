@@ -18,6 +18,7 @@ void setPuzzle(char * c){
 }
 
 void Setup(){
+  int i;
    printf(" \n \
  ██░ ██  ▄▄▄      ███▄    █   ▄████     ▄▄▄        ██████ ▄████▄   ██▓ ██▓ ███▄ ▄███▓ ▄▄▄      ███▄    █\n \ 
 ▓██░ ██▒▒████▄    ██ ▀█   █  ██▒ ▀█▒   ▒████▄    ▒██    ▒▒██▀ ▀█  ▓  ▒▓  ▒▓██▒▀█▀ ██▒▒████▄    ██ ▀█   █ \n \
@@ -37,7 +38,10 @@ void Setup(){
   fgets(_PUZZLE, _MAX_SIZE, stdin);
   char* SPC = strchr(_PUZZLE, '\n');
   *(SPC) = 0;
-  
+
+  for(i = 0; _PUZZLE[i]; i++){
+    _PUZZLE[i] = tolower(_PUZZLE[i]);
+  }
 }
 
 void endGame(){
@@ -50,27 +54,27 @@ void endGame(){
 
 void Display_Man(int c){
   if (c == 1){
-    printf("\t O\n       \\ | /\n\t |\n\t/\n ");
+    printf("\n\t O\n       \\ | /\n\t |\n\t/\n ");
     printf("My foot! WHO the HELL just cut off my foot?!? Imma kill 'em!\n");
   }
   else if(c == 2){
-    printf("\t O\n       \\ | /\n\t |\n");
+    printf("\n\t O\n       \\ | /\n\t |\n");
     printf("Well look at that! Now I can't walk. Requesting a wheelchair on aisle terminal.\n");
   }
   else if(c == 3){
-    printf("\t O\n       \\ | /\n");
+    printf("\n\t O\n       \\ | /\n");
     printf("BRUH. Ya cut my spine in half! I'm the new Clark Kent after his accident.\n");
   }
   else if(c == 4){
-    printf("\t O\n       \\ |\n");
+    printf("\n\t O\n       \\ |\n");
     printf("Welp. It's just you and me now rightie. No other appendages in our way. We can finally be together. Forever. \n");
   }
   else if(c == 5){
-    printf("\t O\n         |\n");
+    printf("\n\t O\n         |\n");
     printf("No hands now... Does this mean I never have to work again? WOOHOO! *cough* I mean- HELP!\n");
   }
   else if(c == 6){
-    printf("\t O\n");
+    printf("\n\t O\n");
     printf("I'm only a DAMN HEAD NOW! How am I even still alive...? WHO CARES. DON'T LET ME DIE BASTARD!\n");
   }
   else if(c == 7){
@@ -115,10 +119,10 @@ void Display_Dog(int c){
 
 
 int Player_Input( char * j){
+  if (isupper(j))
+    tolower(j);
   char BUFFER[100];
-  printf("<%s>\n", j);                                      
-  strcpy(BUFFER, j);                                                                                                                                                                               
-  printf("<%s>\n", BUFFER);                                                                                                                                                                       
+  strcpy(BUFFER, j);                                                                                                                                                                                                                                                                                                                                                    
 
   if (isupper(BUFFER[0]))
     BUFFER[0] = tolower(BUFFER[0]);
