@@ -13,7 +13,7 @@ HangASCIIman runs without dependencies or external libraries so you do not need 
   * Psssttt....You can get rid of those ~ or .o files using ```$make clean```
 3. Start a server by typing in ```./server```. 
 4. Start a client by typing in ```./client```. 
-5. Type a word into ```./server``` for your friend to start guessing.
+5. Once you've gotten that all set up, select whether you'd like a dog or a man to hang. Then you will be prompted to enter a word into ```./server``` for your friend to start guessing.
 
 *Note: Your downloaded/cloned repo should contain: ```selectserv.c client.c makefile networking.c networking.h executioner.c executioner.h```*
 
