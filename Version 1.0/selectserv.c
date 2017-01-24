@@ -23,7 +23,6 @@ char * puzzle;
 
 
 void sub_server( int sd ) {
-  //Setup();
   Display();
   write(sd, _PUZZLE, sizeof(_PUZZLE));
   
