@@ -66,3 +66,6 @@ amyX-- 2017-01-23 10:08 PM
 
 amyX -- 2017-01-23 10:59 PM
 - Added endgame features
+
+amyX -- 2017-01-23 11:16 PM
+- Fixed display problem for client. not yet for server
