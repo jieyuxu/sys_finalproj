@@ -15,10 +15,7 @@ HangASCIIman runs without dependencies or external libraries so you do not need 
 4. Start a client by typing in ```./client```. 
 5. Once you've gotten that all set up, select whether you'd like a dog or a man to hang. Then you will be prompted to enter a word into ```./server``` for your friend to start guessing.
 
-*Note: Your downloaded/cloned repo should contain: ```selectserv.c client.c makefile networking.c networking.h executioner.c executioner.h```*
-
-##ALL FILES IN REPO
-- executioner.c (the hangman game)
+*Note: Your downloaded/cloned repo should contain: ``` - executioner.c (the hangman game)
 - executioner.h
 - client.c
 - client.h
@@ -28,7 +25,7 @@ HangASCIIman runs without dependencies or external libraries so you do not need 
 - makefile
 - devlog.txt
 - DESIGN.txt
-- README.md
+- README.md```*
 
 ##Known Bugs
 * the program accepts and allows non-letter ascii values
