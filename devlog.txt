@@ -88,5 +88,6 @@ miaO -- 2017-01-24 2:31 AM
 - Calls title function in client and server to display on both ends 
 
 miaO -- 2017-01-24 4:12 AM
-- configured system to give client and server an option to pick ascii dog or man before game
-- modified functions to take an extra paramater for identifying man or dog
+- Configured system to give client and server an option to pick ascii dog or man before game
+- Modified functions to take an extra paramater for identifying man or dog
+- Reorganized file structure
