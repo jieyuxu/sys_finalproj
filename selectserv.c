@@ -44,7 +44,7 @@ void sub_server( int sd ) {
     //if (isupper(buffer))
     // tolower(buffer);
     Player_Input( buffer );
-    Display();
+    Display(character);
     write( sd, buffer, sizeof(buffer));    
   }   
 }
