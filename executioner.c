@@ -213,9 +213,9 @@ void Display(int option){
   printf("\n");
 }
 
-int checkWin(char * ans, char * bank){
+int checkWin(char * ans, char * bank, int option){
   if(Check_Word(ans, bank)){
-    Display();
+    Display(option);
     printf("\nYOU WIN!!! ASCII Man lives for another day. That is... until the next game~ ;)\nExiting...\n");
     return 0;
   }
@@ -226,9 +226,9 @@ int checkWin(char * ans, char * bank){
   return 1;
 }
 
-int checkWinServer(char * ans, char * bank){
+int checkWinServer(char * ans, char * bank, int option){
   if(Check_Word(ans, bank)){
-    Display();
+    Display(option);
      printf("\nYOU LOSE!!! ASCII Man lives for another day. That is... until the next game~ ;)\nExiting...\n");
      exit(0);
   }
