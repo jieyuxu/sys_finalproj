@@ -97,7 +97,8 @@ int main(int argc , char *argv[]){
     //accept the incoming connection
     addrlen = sizeof(address);
     clients = 0;
-
+	
+    title(); //displays title
     Setup();
 
     puts("Waiting for connections ...");
