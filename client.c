@@ -7,7 +7,7 @@
 
 int main( int argc, char *argv[] ) {
   
-  title(); //displays title
+  //title(); //displays title
   char *host;
   
   if (argc != 2 ) {
