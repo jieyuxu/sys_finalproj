@@ -18,6 +18,7 @@
 #define PORT 8888
 
 char BANK[25];
+int grimmy = 0;
 
 
 void sub_server( int sd ) {
@@ -200,7 +201,7 @@ int main(int argc , char *argv[]){
                 //Echo back the message that came in
                 else{
                     //set the string terminating NULL byte on the end of the data read
-                    Display(puzzle);
+                    Display(puzzle, grimmy, BANK);
                     buffer[valread] = '\0';
                     //WHAT TO DO IF CLIENT SENDS STUFF BACK
                     //printf("Received: %s", buffer);

@@ -112,7 +112,7 @@ void Display_Dog(int c){
     printf("^..^     / \n/_/\\_____/ \n   /\\  /\\ \n  /  \\/  \\ \n");
 }
 
-char * Player_Input(char * j, char * ans, char * bank){
+char * Player_Input(char * j, char * ans, char * bank, int grim){
   char BUFFER[100];
   //printf("<%s>\n", j);
   //printf("<%s>\n", BUFFER);
@@ -131,9 +131,9 @@ char * Player_Input(char * j, char * ans, char * bank){
 
   if(strstr(bank, BUFFER) == NULL){
     strcat(bank, BUFFER);
-    _LETTER_COUNTER++;
+    //_LETTER_COUNTER++;
     if (! strchr(ans, BUFFER[0])){
-      GRIM_REAPER++;
+      grim++;
     }
   }
 
@@ -146,11 +146,11 @@ char * Player_Input(char * j, char * ans, char * bank){
     }
 
     strcat(bank, BUFFER);
-    _LETTER_COUNTER++;
+    //_LETTER_COUNTER++;
 
 
     if (! strchr(ans, BUFFER[0])){
-      GRIM_REAPER++;
+      grim++;
     }
   }
   
@@ -162,20 +162,19 @@ char * Player_Input(char * j, char * ans, char * bank){
 
 
 
-void Display_Word(char * letter){
+void Display_Word(char * letter, char * bank){
   while(*letter != '\0'){
     if(strchr(" ", *letter)){
       printf("   ");
     }
 
-    else if(strchr(_LETTER_BANK, *letter) == NULL){
+    else if(strchr(bank, *letter) == NULL){
       printf(" _ ");
     }
     else{
       printf("%c", *letter);
     }
 
-   
     letter++;
   }
 
@@ -184,18 +183,12 @@ void Display_Word(char * letter){
     
 }
 
-int Check_Word(){
-  char * letter = _PUZZLE;
+int Check_Word(char * letter, char * bank){
   
   while(*letter != '\0'){
-    if(strchr(" ", *letter)){
-    }  
-
-    else if(strchr(_LETTER_BANK, *letter) == NULL){
+    if(strchr(bank, *letter) == NULL){
       return 0;
     }
-
-   
     letter++;
   }
 
@@ -203,16 +196,16 @@ int Check_Word(){
 }
 
 
-void Display(char * word){
+void Display(char * word, int grim, char * bank){
   if (character)
-    Display_Man(GRIM_REAPER);
+    Display_Man(grim);
   else 
-    Display_Dog(GRIM_REAPER);
-  Display_Word(word);
+    Display_Dog(grim);
+  Display_Word(word, bank);
 }
 
-int checkWin(){
-  if(Check_Word()){
+int checkWin(char * ans, char * bank){
+  if(Check_Word(ans, bank)){
     //Display();
     printf("\nYOU WIN!!! ASCII Man lives for another day. That is... until the next game~ ;)\nExiting...\n");
     return 0;

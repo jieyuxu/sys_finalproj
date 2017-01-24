@@ -6,6 +6,9 @@
 #include "executioner.h"
 #include "networking.h"
 
+char ans[100];
+int grim_reaper = 0;
+
 int main( int argc, char *argv[] ) {
 
   char *host;
@@ -23,17 +26,17 @@ int main( int argc, char *argv[] ) {
   char sbuffer[MESSAGE_BUFFER_SIZE];
   char rbuffer[MESSAGE_BUFFER_SIZE];
   char BANK[25];
-  char ans[100];
+  
 
   //Reading for Setup
   read( sd, sbuffer, sizeof(sbuffer) );
   // setPuzzle(buffer);
   printf("the buffer: %s\n", sbuffer);
   strcpy(ans, sbuffer);
-  
-  while (1) {
-    printf("where you at 5\n");
-    Display(sbuffer);
+  printf("the anser: %s\n", ans);
+
+  while (checkWin(ans, BANK)) {
+    Display(sbuffer, grim_reaper, BANK);
     printf("Enter Letter: ");
 
     if (fgets( sbuffer, sizeof(sbuffer), stdin) != NULL){
@@ -42,12 +45,6 @@ int main( int argc, char *argv[] ) {
       send(sd, sbuffer, 200, 0);
       Player_Input(sbuffer, ans, BANK);
     }
-
-    isR = read(sd, rbuffer, sizeof(rbuffer));
-    if (isR){
-      printf("rbuffer: %s\n", rbuffer);
-    }
-   
 
    // printf("where you at 1\n");
     //Player_Input(buffer, cat);
@@ -61,7 +58,6 @@ int main( int argc, char *argv[] ) {
     //   //printf("where you at 4\n");
     // }
     
-  }
-  
+  }  
   return 0;
 }
