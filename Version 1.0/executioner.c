@@ -115,11 +115,9 @@ void Display_Dog(int c){
 
 
 int Player_Input( char * j){
-  char BUFFER[100];
-  printf("<%s>\n", j);                                      
-  strcpy(BUFFER, j);                                                                                                                                                                               
-  printf("<%s>\n", BUFFER);                                                                                                                                                                       
-
+  char BUFFER[100];                                     
+  strcpy(BUFFER, j);   
+  
   if (isupper(BUFFER[0]))
     BUFFER[0] = tolower(BUFFER[0]);
 
