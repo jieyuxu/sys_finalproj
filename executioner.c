@@ -229,14 +229,14 @@ int checkWin(char * ans, char * bank, int option){
 int checkWinServer(char * ans, char * bank, int option){
   if(Check_Word(ans, bank)){
     Display(option);
-    if (character) 
+    if (option) 
       printf("\nYOU LOSE!!! ASCII Man lives for another day. That is... until the next game~ ;)\nExiting...\n");
     else
       printf("\nYOU LOSE!!! ASCII Dog lives for another day. That is... until the next game~ ;)\nExiting...\n");
      exit(0);
   }
   if(GRIM_REAPER == 7){
-    if (character) 
+    if (option) 
       printf("\nYOU WIN!!! ASCII Man dies. Will he live the next game??? ;)\nExiting...\n");
     else 
       printf("\nYOU WIN!!! ASCII Dog dies. Will he live the next game??? ;)\nExiting...\n");
