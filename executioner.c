@@ -79,19 +79,19 @@ void Display_Man(int c){
 
 void Display_Dog(int c){
   if (c == 1){
-    printf("^..^     / \n/_/\\_____/ \n   /\\  / \n  /  \\/ \n");
+    printf("^..^      / \n/_/\\_____/ \n   /\\  / \n  /  \\/ \n");
     printf("My foot! WHO the WOOF just ate me foot?!? I'll steal their squishy toy! \n");
   }
   else if(c == 2){
-    printf("^..^     / \n/_/\\_____/ \n   /\\  \n  /  \\\n");
+    printf("^..^      / \n/_/\\_____/ \n   /\\  \n  /  \\\n");
     printf("Well look at that! Now I have no hind legs. I'm perpetually sitting. More treats for me!\n");
   }
   else if(c == 3){
-    printf("^..^     / \n/_/\\_____/ \n   /   \n  /  \n");
+    printf("^..^      / \n/_/\\_____/ \n   /   \n  /  \n");
     printf("With only one paw left I can still shake master's hand! I am still perfect Ascii Doggo! \n");
   }
   else if(c == 4){
-    printf("^..^     / \n/_/\\_____/ \n");
+    printf("^..^      / \n/_/\\_____/ \n");
     printf("Welp. It's just you and me now tail. Though I can no longer chase you, I will get you somehow! \n");
   }
   else if(c == 5){
