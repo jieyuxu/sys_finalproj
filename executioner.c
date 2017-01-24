@@ -162,20 +162,20 @@ char * Player_Input(char * j, char * ans, char * bank, int grim){
 
 
 
-void Display_Word(char * letter, char * bank){
-  while(*letter != '\0'){
-    if(strchr(" ", *letter)){
+void Display_Word(char * answer, char * bank){
+  while(*answer != '\0'){
+    if(strchr(" ", *answer)){
       printf("   ");
     }
 
-    else if(strchr(bank, *letter) == NULL){
+    else if(strchr(bank, *answer) == NULL){
       printf(" _ ");
     }
     else{
-      printf("%c", *letter);
+      printf("%c", *answer);
     }
 
-    letter++;
+    answer++;
   }
 
    printf("\n");

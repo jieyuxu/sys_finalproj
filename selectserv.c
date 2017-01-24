@@ -19,6 +19,7 @@
 
 char BANK[25];
 int grimmy = 0;
+char * puzzle;
 
 
 void sub_server( int sd ) {
@@ -97,9 +98,9 @@ int main(int argc , char *argv[]){
     fgets(buffer, 100, stdin);
     char * SPC = strchr(buffer, '\n');
     *(SPC) = 0;
-    char * puzzle = buffer;
+    puzzle = buffer;
     printf("spc: %s", SPC);
-    printf("buffer: %s\n", buffer);
+    printf("buffer: %s\n", puzzle);
     puts("Waiting for connections ...");
 
     while(TRUE) {
@@ -201,11 +202,12 @@ int main(int argc , char *argv[]){
                 //Echo back the message that came in
                 else{
                     //set the string terminating NULL byte on the end of the data read
+                    char * sendy = Player_Input(buffer, puzzle, BANK);
                     Display(puzzle, grimmy, BANK);
                     buffer[valread] = '\0';
                     //WHAT TO DO IF CLIENT SENDS STUFF BACK
                     //printf("Received: %s", buffer);
-                    char * sendy = Player_Input(buffer, puzzle, BANK);
+                    
                     //printf("sendy: %s\n", sendy);
                     send(sd , sendy , 200 , 0 );
                    

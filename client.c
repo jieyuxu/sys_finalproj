@@ -36,7 +36,8 @@ int main( int argc, char *argv[] ) {
   printf("the anser: %s\n", ans);
 
   while (checkWin(ans, BANK)) {
-    Display(sbuffer, grim_reaper, BANK);
+    Display(ans, grim_reaper, BANK);
+
     printf("Enter Letter: ");
 
     if (fgets( sbuffer, sizeof(sbuffer), stdin) != NULL){
