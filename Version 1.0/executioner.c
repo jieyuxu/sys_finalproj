@@ -116,13 +116,9 @@ void Display_Dog(int c){
 
 int Player_Input( char * j){
   char BUFFER[100];
-  printf("<%s>\n", j);
-  //printf("<%s>\n", BUFFER);                                        
-  strcpy(BUFFER, j);
-  //strchr(BUFFER, "\n");                                                                                                                                                                                 
-  printf("<%s>\n", BUFFER);
-  //printf("Please input letter: ");                                                                                                                                                                       
-  //fgets(BUFFER, 100, stdin);                                                                                                                                                                             
+  printf("<%s>\n", j);                                      
+  strcpy(BUFFER, j);                                                                                                                                                                               
+  printf("<%s>\n", BUFFER);                                                                                                                                                                       
 
   if (isupper(BUFFER[0]))
     BUFFER[0] = tolower(BUFFER[0]);
@@ -141,8 +137,7 @@ int Player_Input( char * j){
 
   else{
     while (strchr(_LETTER_BANK, BUFFER[0])){
-      printf("Letter already guessed. \nChoose another! ");
-      //fgets(BUFFER, 100, stdin);                                                                                                                                                                          
+      printf("Letter already guessed. \nChoose another! ");                                                                                                                                                                        
       BUFFER[1] = 0;
       return 0;
     }
