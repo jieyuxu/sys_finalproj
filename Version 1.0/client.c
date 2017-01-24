@@ -6,10 +6,11 @@
 #include "networking.h"
 
 int main( int argc, char *argv[] ) {
-
+  
+  title(); //displays title
   char *host;
+  
   if (argc != 2 ) {
-    title(); //displays title
     printf("host not specified, conneting to 127.0.0.1\n");
     host = "127.0.0.1";
   }
