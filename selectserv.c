@@ -37,7 +37,7 @@ void sub_server( int sd ) {
   
   char buffer[MESSAGE_BUFFER_SIZE];
   
-  while ( checkWinServer()){
+  while ( checkWinServer(character)){
     
     read( sd, buffer, sizeof(buffer));
     printf("[SERVER %d] received: %s\n", getpid(), buffer );
