@@ -17,23 +17,7 @@
 #define FALSE  0
 #define PORT 8888
 
-
-// void sub_server( int sd ) {
-//   Setup();
-//   Display();
-//   write(sd, _PUZZLE, sizeof(_PUZZLE));
-  
-//   char buffer[MESSAGE_BUFFER_SIZE];
-  
-//   while ( checkWin()){
-    
-//     read( sd, buffer, sizeof(buffer));
-//     printf("[SERVER %d] received: %s\n", getpid(), buffer );
-//     Player_Input( buffer );
-//     Display();
-//     write( sd, buffer, sizeof(buffer));    
-//   }   
-// }
+char BANK[25];
 
 
 void sub_server( int sd ) {
@@ -112,6 +96,7 @@ int main(int argc , char *argv[]){
     fgets(buffer, 100, stdin);
     char * SPC = strchr(buffer, '\n');
     *(SPC) = 0;
+    char * puzzle = buffer;
     printf("spc: %s", SPC);
     printf("buffer: %s\n", buffer);
     puts("Waiting for connections ...");
@@ -183,7 +168,6 @@ int main(int argc , char *argv[]){
 
         //no more adding
 
-        Display(buffer);
         //fgets(buffer, sizeof(buffer), stdin);
         //printf("the buffer: %s", buffer);
         // strcpy(buffer, cat);
@@ -216,11 +200,13 @@ int main(int argc , char *argv[]){
                 //Echo back the message that came in
                 else{
                     //set the string terminating NULL byte on the end of the data read
+                    Display(puzzle);
                     buffer[valread] = '\0';
                     //WHAT TO DO IF CLIENT SENDS STUFF BACK
-                    printf("Received: %s", buffer);
-                    //Player_Input(buffer, SPC);
-                    send(sd , buffer , strlen(buffer) , 0 );
+                    //printf("Received: %s", buffer);
+                    char * sendy = Player_Input(buffer, puzzle, BANK);
+                    //printf("sendy: %s\n", sendy);
+                    send(sd , sendy , 200 , 0 );
                    
 		    // sub_server(sd);
 		    //Setup();
@@ -233,3 +219,20 @@ int main(int argc , char *argv[]){
       
     return 0;
 } 
+
+// void sub_server( int sd ) {
+//   Setup();
+//   Display();
+//   write(sd, _PUZZLE, sizeof(_PUZZLE));
+  
+//   char buffer[MESSAGE_BUFFER_SIZE];
+  
+//   while ( checkWin()){
+    
+//     read( sd, buffer, sizeof(buffer));
+//     printf("[SERVER %d] received: %s\n", getpid(), buffer );
+//     Player_Input( buffer );
+//     Display();
+//     write( sd, buffer, sizeof(buffer));    
+//   }   
+// }

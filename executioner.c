@@ -77,7 +77,7 @@ void Display_Man(int c){
     endGame();
   }
   else
-    printf("\t O\n       \\ | /\n\t |\n\t/ \\\n ");
+    printf("\n\t O\n       \\ | /\n\t |\n\t/ \\\n ");
 }
 
 void Display_Dog(int c){
@@ -112,13 +112,13 @@ void Display_Dog(int c){
     printf("^..^     / \n/_/\\_____/ \n   /\\  /\\ \n  /  \\/  \\ \n");
 }
 
-int Player_Input(char * j, char * ans){
+char * Player_Input(char * j, char * ans, char * bank){
   char BUFFER[100];
-  printf("<%s>\n", j);
+  //printf("<%s>\n", j);
   //printf("<%s>\n", BUFFER);
   strcpy(BUFFER, j);
   //strchr(BUFFER, "\n"); 
-  printf("<%s>\n", BUFFER);
+  //printf("<%s>\n", BUFFER);
   //printf("Please input letter: ");
   //fgets(BUFFER, 100, stdin);
 
@@ -126,36 +126,36 @@ int Player_Input(char * j, char * ans){
   //   BUFFER[0] = tolower(BUFFER[0]);
   
   BUFFER[1] = 0;
-  char * puzzle = ans;
+  // char * puzzle = ans;
   
 
-  if(strstr(_LETTER_BANK, BUFFER) == NULL){
-    strcat(_LETTER_BANK, BUFFER);
+  if(strstr(bank, BUFFER) == NULL){
+    strcat(bank, BUFFER);
     _LETTER_COUNTER++;
-    if (! strchr(puzzle, BUFFER[0])){
+    if (! strchr(ans, BUFFER[0])){
       GRIM_REAPER++;
     }
   }
 
   else{
-    while (strchr(_LETTER_BANK, BUFFER[0])){
+    while (strchr(bank, BUFFER[0])){
       printf("Letter already guessed. \nChoose another! ");
       //fgets(BUFFER, 100, stdin);
       BUFFER[1] = 0;
       return 0;
     }
 
-    strcat(_LETTER_BANK, BUFFER);
+    strcat(bank, BUFFER);
     _LETTER_COUNTER++;
 
 
-    if (! strchr(puzzle, BUFFER[0])){
+    if (! strchr(ans, BUFFER[0])){
       GRIM_REAPER++;
     }
   }
   
-  printf("The letter bank is currently: <%s>\n", _LETTER_BANK);
-  return 1;
+  printf("The letter bank is currently: <%s>\n", bank);
+  return bank;
   
 }
 

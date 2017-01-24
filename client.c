@@ -16,26 +16,38 @@ int main( int argc, char *argv[] ) {
   else
     host = argv[1];
   
-  int sd;
+  int sd, isR;
 
   sd = client_connect( host );
 
-  char buffer[MESSAGE_BUFFER_SIZE];
-
+  char sbuffer[MESSAGE_BUFFER_SIZE];
+  char rbuffer[MESSAGE_BUFFER_SIZE];
+  char BANK[25];
+  char ans[100];
 
   //Reading for Setup
-  read( sd, buffer, sizeof(buffer) );
+  read( sd, sbuffer, sizeof(sbuffer) );
   // setPuzzle(buffer);
-  printf("the buffer: %s\n", buffer);
+  printf("the buffer: %s\n", sbuffer);
+  strcpy(ans, sbuffer);
   
   while (1) {
     printf("where you at 5\n");
-    Display(buffer);
+    Display(sbuffer);
     printf("Enter Letter: ");
-    fgets( buffer, sizeof(buffer), stdin );
-    char *p = strchr(buffer, '\n');
-    *p = 0;
-    send(sd, buffer, 200, 0);
+
+    if (fgets( sbuffer, sizeof(sbuffer), stdin) != NULL){
+      char *p = strchr(sbuffer, '\n');
+      *p = 0;
+      send(sd, sbuffer, 200, 0);
+      Player_Input(sbuffer, ans, BANK);
+    }
+
+    isR = read(sd, rbuffer, sizeof(rbuffer));
+    if (isR){
+      printf("rbuffer: %s\n", rbuffer);
+    }
+   
 
    // printf("where you at 1\n");
     //Player_Input(buffer, cat);
