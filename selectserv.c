@@ -1,4 +1,3 @@
-<<<<<<< HEAD:Version 1.0/selectserv.c
 #include <stdio.h>
 #include <string.h>   //strlen
 #include <stdlib.h>
