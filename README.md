@@ -18,3 +18,4 @@ HangASCIIman runs without dependencies or external libraries so you do not need 
 *Note: Your downloaded/cloned repo should contain: ```selectserv.c client.c makefile networking.c networking.h executioner.c executioner.h```*
 
 ##Known Bugs
+* the program accepts and allows non-letter ascii values
