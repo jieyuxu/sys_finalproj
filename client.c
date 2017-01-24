@@ -4,6 +4,8 @@
 #include <unistd.h>
 
 #include "networking.h"
+
+char character_input[5];
 int character = 1;
 
 int main( int argc, char *argv[] ) {
