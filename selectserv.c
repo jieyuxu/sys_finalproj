@@ -9,17 +9,15 @@
 #include <netinet/in.h>
 #include <sys/time.h> //FD_SET, FD_ISSET, FD_ZERO macros
 #include "executioner.h"
-<<<<<<< HEAD
-#include "networking.h"  
-=======
+
 #include "networking.h"
->>>>>>> 238d27c576843467a72709d1f9dbe4552312fc3a
+
 
 #define TRUE   1
 #define FALSE  0
 #define PORT 8888
 
-<<<<<<< HEAD
+
 // void sub_server( int sd ) {
 //   Setup();
 //   Display();
@@ -36,11 +34,8 @@
 //     write( sd, buffer, sizeof(buffer));    
 //   }   
 // }
- 
-int main(int argc , char *argv[]){
-    int opt = TRUE;
-    int master_socket , addrlen , new_socket , client_socket[30] , max_clients = 1 , activity, i , valread , sd;
-=======
+
+
 void sub_server( int sd ) {
   Setup();
   Display();
@@ -57,13 +52,13 @@ void sub_server( int sd ) {
     write( sd, buffer, sizeof(buffer));    
   }   
 }
+ 
 
 int main(int argc , char *argv[]){
     int opt = TRUE;
     int master_socket , addrlen , new_socket , client_socket[30] , max_clients = 2  , activity, i , valread , sd, clients;
->>>>>>> 238d27c576843467a72709d1f9dbe4552312fc3a
     int max_sd;
-    int clients = 0;
+    clients = 0;
     struct sockaddr_in address;
       
     char buffer[1025];  //data buffer of 1K
@@ -143,22 +138,14 @@ int main(int argc , char *argv[]){
         }
           
         //If something happened on the master socket , then its an incoming connection
-<<<<<<< HEAD
-        while (FD_ISSET(master_socket, &readfds) && clients < max_clients) {
-=======
 
         while (FD_ISSET(master_socket, &readfds) && clients <  max_clients){
->>>>>>> 238d27c576843467a72709d1f9dbe4552312fc3a
             if ((new_socket = accept(master_socket, (struct sockaddr *)&address, (socklen_t*)&addrlen))<0){
                 perror("accept");
                 exit(EXIT_FAILURE);
             }
-
-<<<<<<< HEAD
             clients++;
-=======
-	    clients++;
->>>>>>> 238d27c576843467a72709d1f9dbe4552312fc3a
+
           
             //inform user of socket number - used in send and receive commands
             printf("New connection , socket fd is %d , ip is : %s , port : %d \n" , new_socket , inet_ntoa(address.sin_addr) , ntohs(address.sin_port));
@@ -185,7 +172,7 @@ int main(int argc , char *argv[]){
 	    
 	    
         }
-<<<<<<< HEAD
+
         char * cat = "Cat";
         Setup();
         Display(cat);
@@ -199,13 +186,6 @@ int main(int argc , char *argv[]){
         }
         
 
-          
-=======
-
-	sub_server(sd);
-
-	
->>>>>>> 238d27c576843467a72709d1f9dbe4552312fc3a
         //else its some IO operation on some other socket :)
         for (i = 0; i < max_clients; i++) {
             sd = client_socket[i];
@@ -227,16 +207,12 @@ int main(int argc , char *argv[]){
                 else{
                     //set the string terminating NULL byte on the end of the data read
                     buffer[valread] = '\0';
-<<<<<<< HEAD
                     // send(sd , buffer , strlen(buffer) , 0 );
                    
-=======
-                    send(sd , buffer , strlen(buffer) , 0 );
 		    // sub_server(sd);
 		    //Setup();
 		    //Display();
 		
->>>>>>> 238d27c576843467a72709d1f9dbe4552312fc3a
                 }
             }
         }

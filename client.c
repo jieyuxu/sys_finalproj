@@ -25,7 +25,6 @@ int main( int argc, char *argv[] ) {
 
   //Reading for Setup
   read( sd, buffer, sizeof(buffer) );
-<<<<<<< HEAD
   // setPuzzle(buffer);
   printf("the buffer: %s\n", buffer);
 
@@ -46,29 +45,6 @@ int main( int argc, char *argv[] ) {
     }
     
   }
-=======
-  printf("<%s>\n", buffer);
-
-  read( sd, buffer, sizeof(buffer) );
-  setPuzzle(buffer);
-  
-  
-   while (1) { 
-     Display();
-     printf("Enter Letter: ");
-     fgets( buffer, sizeof(buffer), stdin );
-     char *p = strchr(buffer, '\n');
-     *p = 0;
-     
-     if(Player_Input(buffer)){
-       
-       write( sd, buffer, sizeof(buffer) );
-       read( sd, buffer, sizeof(buffer) );
-       //printf( "received: %s\n", buffer );
-     }
-   }
-     
->>>>>>> 238d27c576843467a72709d1f9dbe4552312fc3a
   
   return 0;
 }
