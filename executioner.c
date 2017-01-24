@@ -112,7 +112,7 @@ void Display_Dog(int c){
     printf("^..^     / \n/_/\\_____/ \n   /\\  /\\ \n  /  \\/  \\ \n");
 }
 
-int Player_Input( char * j){
+int Player_Input(char * j, char * ans){
   char BUFFER[100];
   printf("<%s>\n", j);
   //printf("<%s>\n", BUFFER);
@@ -122,8 +122,8 @@ int Player_Input( char * j){
   //printf("Please input letter: ");
   //fgets(BUFFER, 100, stdin);
 
-  if (isupper(BUFFER[0]))
-    BUFFER[0] = tolower(BUFFER[0]);
+  // if (isupper(BUFFER[0]))
+  //   BUFFER[0] = tolower(BUFFER[0]);
   
   BUFFER[1] = 0;
   char * puzzle = _PUZZLE;
@@ -162,9 +162,7 @@ int Player_Input( char * j){
 
 
 
-void Display_Word(){
-  char * letter = _PUZZLE;
-  
+void Display_Word(char * letter){
   while(*letter != '\0'){
     if(strchr(" ", *letter)){
       printf("   ");
@@ -205,17 +203,17 @@ int Check_Word(){
 }
 
 
-void Display(){
+void Display(char * word){
   if (character)
     Display_Man(GRIM_REAPER);
   else 
     Display_Dog(GRIM_REAPER);
-  Display_Word();
+  Display_Word(word);
 }
 
 int checkWin(){
   if(Check_Word()){
-    Display();
+    //Display();
     printf("\nYOU WIN!!! ASCII Man lives for another day. That is... until the next game~ ;)\nExiting...\n");
     return 0;
   }

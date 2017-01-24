@@ -31,8 +31,8 @@ int server_setup() {
   
   struct sockaddr_in sock;
   sock.sin_family = AF_INET;
-  sock.sin_addr.s_addr = inet_addr("149.89.150.107");
-  sock.sin_port = htons(9001);
+  sock.sin_addr.s_addr = INADDR_ANY;
+  sock.sin_port = htons(8888);
   
   setsockopt(sd, SOL_SOCKET, SO_REUSEADDR, &optval, sizeof(optval));
 

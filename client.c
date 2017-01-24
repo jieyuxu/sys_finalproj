@@ -3,6 +3,7 @@
 #include <string.h>
 #include <unistd.h>
 
+#include "executioner.h"
 #include "networking.h"
 
 int main( int argc, char *argv[] ) {
@@ -25,18 +26,20 @@ int main( int argc, char *argv[] ) {
 
   //Reading for Setup
   read( sd, buffer, sizeof(buffer) );
-  setPuzzle(buffer);
-  
+  // setPuzzle(buffer);
+  printf("the buffer: %s\n", buffer);
+
+  char * cat = "cat";
   
   while (1) {
-    Display();
+    Display(cat);
     printf("Enter Letter: ");
     fgets( buffer, sizeof(buffer), stdin );
     char *p = strchr(buffer, '\n');
     *p = 0;
 
     if(Player_Input(buffer)){
-    
+      
       write( sd, buffer, sizeof(buffer) );
       read( sd, buffer, sizeof(buffer) );
       //printf( "received: %s\n", buffer );
