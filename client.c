@@ -30,10 +30,9 @@ int main( int argc, char *argv[] ) {
   //printf("The word is: %s", buffer);
   
   
-  
-
+ 
   while (checkWin()) {
-    Display();
+    Display(option);
     printf("Enter Letter: ");
     fgets( buffer, sizeof(buffer), stdin );
     char *p = strchr(buffer, '\n');
