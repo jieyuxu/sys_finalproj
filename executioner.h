@@ -12,6 +12,7 @@ void Display_Word();
 int Check_Word();
 void Display();
 int checkWin(int option);
+int checkWinServer(int option);
 
 
 #endif
