@@ -103,7 +103,7 @@ void Display_Dog(int c){
     printf("I'm only a DAMN HEAD NOW! How can I still woof...? WHO CARES. PLZ DON'T LET ME DIE MASTER! *maximum cuteness lvl puppy eyes activated*\n");
   }
   else if(c == 7){
-      //endGame();
+      endGame();
   }
   else
     printf("^..^     / \n/_/\\_____/ \n   /\\  /\\ \n  /  \\/  \\ \n");
@@ -229,11 +229,17 @@ int checkWin(char * ans, char * bank, int option){
 int checkWinServer(char * ans, char * bank, int option){
   if(Check_Word(ans, bank)){
     Display(option);
-     printf("\nYOU LOSE!!! ASCII Man lives for another day. That is... until the next game~ ;)\nExiting...\n");
+    if (character) 
+      printf("\nYOU LOSE!!! ASCII Man lives for another day. That is... until the next game~ ;)\nExiting...\n");
+    else
+      printf("\nYOU LOSE!!! ASCII Dog lives for another day. That is... until the next game~ ;)\nExiting...\n");
      exit(0);
   }
   if(GRIM_REAPER == 7){
-    printf("\nYOU WIN!!! ASCII Man dies. Will he live the next game??? ;)\nExiting...\n");
+    if (character) 
+      printf("\nYOU WIN!!! ASCII Man dies. Will he live the next game??? ;)\nExiting...\n");
+    else 
+      printf("\nYOU WIN!!! ASCII Dog dies. Will he live the next game??? ;)\nExiting...\n");
     exit(0);
   }
   return 1;
