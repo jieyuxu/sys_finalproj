@@ -3,7 +3,7 @@ By: Amy Xu, Mia O'Brien, Shaik Abiden
 
 ##HangASCIIman? That sounds brutal! What is it?!
 HangASCIIman is the C remake of your favorite childhood game: Hangman! Instead of playing this game on a boring white or black or even smart (not so smart) board, play it in your very own terminal instead. 
-*Note: It's recommended to play this with a friend. Or someone whose limbs you'd like to chop off in a socially acceptable and hidden way.
+*Note: It's recommended to play this with a friend. Or someone whose limbs you'd like to chop off in a socially acceptable and hidden way.*
 
 ##Ohhh...so how do you use it?
 HangASCIIman runs without dependencies or external libraries so you do not need to install anything in advance.
@@ -15,6 +15,6 @@ HangASCIIman runs without dependencies or external libraries so you do not need 
 4. Start a client by typing in ```./client```. 
 5. Type a word into ```./server``` for your friend to start guessing.
 
-* Note: Your downloaded/cloned repo should contain: ```selectserv.c client.c makefile networking.c networking.h executioner.c executioner.h```
+*Note: Your downloaded/cloned repo should contain: ```selectserv.c client.c makefile networking.c networking.h executioner.c executioner.h```*
 
 ##Known Bugs
