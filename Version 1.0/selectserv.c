@@ -24,8 +24,8 @@ char * puzzle;
 
 void sub_server( int sd ) {
   Display();
-  if (isupper(_PUZZLE))
-    tolower(_PUZZLE);
+  //  if (isupper(_PUZZLE))
+  //tolower(_PUZZLE);
 
   write(sd, _PUZZLE, sizeof(_PUZZLE));
   
@@ -35,8 +35,8 @@ void sub_server( int sd ) {
     
     read( sd, buffer, sizeof(buffer));
     printf("[SERVER %d] received: %s\n", getpid(), buffer );
-    if (isupper(buffer))
-      tolower(buffer);
+    //if (isupper(buffer))
+    // tolower(buffer);
     Player_Input( buffer );
     Display();
     write( sd, buffer, sizeof(buffer));    

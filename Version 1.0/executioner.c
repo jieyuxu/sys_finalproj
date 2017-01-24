@@ -39,16 +39,16 @@ void Setup(){
   char* SPC = strchr(_PUZZLE, '\n');
   *(SPC) = 0;
 
-  for(i = 0; _PUZZLE[i]; i++){
-    _PUZZLE[i] = tolower(_PUZZLE[i]);
-  }
+  //  for(i = 0; _PUZZLE[i]; i++){
+  //_PUZZLE[i] = tolower(_PUZZLE[i]);
+  //}
 }
 
 void endGame(){
   printf("\nASCII MAN'S HEAD WAS CHOPPED OFF. SHAME ON YOU. GET OUT OF HERE!\n");
   printf("ASCII Man whispers: I will haunt you from the deadddddd\n");
   printf("The word was: %s \nExiting...\n", _PUZZLE);
-  // exit(0);
+  exit(0);
 }
 
 
@@ -119,8 +119,8 @@ void Display_Dog(int c){
 
 
 int Player_Input( char * j){
-  if (isupper(j))
-    tolower(j);
+  //if (isupper(j))
+  //tolower(j);
   char BUFFER[100];
   strcpy(BUFFER, j);                                                                                                                                                                                                                                                                                                                                                    
 
