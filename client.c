@@ -4,10 +4,12 @@
 #include <unistd.h>
 
 #include "networking.h"
+int character = 1;
 
 int main( int argc, char *argv[] ) {
   
   Title(); //displays title
+
   char *host;
   
   if (argc != 2 ) {
@@ -16,7 +18,10 @@ int main( int argc, char *argv[] ) {
   }
   else
     host = argv[1];
-
+   
+  printf("Would you like to hang a man or a dog? \n \t \t (Press m)   (Press d)");
+  fgets(character_input, 5, stdin);
+  if (strchr(character_input, 'd')) character = 0;
   int sd;
 
   sd = client_connect( host );                                                                                                                                                                  
@@ -32,7 +37,7 @@ int main( int argc, char *argv[] ) {
   
  
   while (checkWin()) {
-    Display(option);
+    Display(character);
     printf("Enter Letter: ");
     fgets( buffer, sizeof(buffer), stdin );
     char *p = strchr(buffer, '\n');
