@@ -8,7 +8,7 @@ client: client.o networking.o executioner.o
 selectserv: selectserv.o networking.o executioner.o
 	gcc -o server selectserv.o networking.o executioner.o
 
-selectserv.o: executioner.c executioner.h networking.h selectserv.c server.c server.h
+selectserv.o: executioner.c executioner.h networking.h selectserv.c
 	$(GCC) selectserv.c 
 
 client.o: executioner.c executioner.h networking.h client.c 

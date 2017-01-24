@@ -126,7 +126,7 @@ int Player_Input(char * j, char * ans){
   //   BUFFER[0] = tolower(BUFFER[0]);
   
   BUFFER[1] = 0;
-  char * puzzle = _PUZZLE;
+  char * puzzle = ans;
   
 
   if(strstr(_LETTER_BANK, BUFFER) == NULL){

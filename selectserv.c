@@ -56,7 +56,7 @@ void sub_server( int sd ) {
 
 int main(int argc , char *argv[]){
     int opt = TRUE;
-    int master_socket , addrlen , new_socket , client_socket[30] , max_clients = 2  , activity, i , valread , sd, clients;
+    int master_socket , addrlen , new_socket , client_socket[30] , max_clients = 1  , activity, i , valread , sd, clients;
     int max_sd;
     clients = 0;
     struct sockaddr_in address;
@@ -151,9 +151,9 @@ int main(int argc , char *argv[]){
             printf("New connection , socket fd is %d , ip is : %s , port : %d \n" , new_socket , inet_ntoa(address.sin_addr) , ntohs(address.sin_port));
         
             //send new connection greeting message
-            if( send(new_socket, message, strlen(message), 0) != strlen(message) ) {
-                perror("send");
-            }
+            // if( send(new_socket, message, strlen(message), 0) != strlen(message) ) {
+            //     perror("send");
+            // }
              
             puts("Welcome message sent successfully");
             
@@ -165,7 +165,7 @@ int main(int argc , char *argv[]){
                     client_socket[i] = new_socket;
                     printf("Adding to list of sockets as %d\n" , i);
                      
-		    // break;
+		            break;
                 }
             }
 
@@ -173,16 +173,18 @@ int main(int argc , char *argv[]){
 	    
         }
 
-        char * cat = "Cat";
+        char * cat = "Cat\0";
         Setup();
         Display(cat);
         //fgets(buffer, sizeof(buffer), stdin);
         //printf("the buffer: %s", buffer);
         strcpy(buffer, cat);
+
+        
         
         for (i = 0; i < max_clients; i++) {
             sd = client_socket[i];
-            write(sd, buffer, sizeof(buffer));
+            send(sd, buffer, strlen(buffer), 0);
         }
         
 
@@ -206,8 +208,8 @@ int main(int argc , char *argv[]){
                 //Echo back the message that came in
                 else{
                     //set the string terminating NULL byte on the end of the data read
-                    buffer[valread] = '\0';
-                    // send(sd , buffer , strlen(buffer) , 0 );
+                    //buffer[valread] = '\0';
+                    send(sd , buffer , strlen(buffer) , 0 );
                    
 		    // sub_server(sd);
 		    //Setup();

@@ -30,21 +30,27 @@ int main( int argc, char *argv[] ) {
 
   char * cat = "cat";
   
-  while (1) {
-    Display(cat);
-    printf("Enter Letter: ");
-    fgets( buffer, sizeof(buffer), stdin );
-    char *p = strchr(buffer, '\n');
-    *p = 0;
+  // while (1) {
+  //   printf("where you at 5\n");
+  //   Display(cat);
+  //   printf("Enter Letter: ");
+  //   fgets( buffer, sizeof(buffer), stdin );
+  //   char *p = strchr(buffer, '\n');
+  //   *p = 0;
 
-    if(Player_Input(buffer)){
-      
-      write( sd, buffer, sizeof(buffer) );
-      read( sd, buffer, sizeof(buffer) );
-      //printf( "received: %s\n", buffer );
-    }
+  //  // printf("where you at 1\n");
+  //   Player_Input(buffer, cat);
+
+  //   // if(Player_Input(buffer, cat)){
+  //   //   //printf("where you at 2\n");
+  //   //   write( sd, buffer, sizeof(buffer) );
+  //   //  // printf("where you at 3\n");
+  //   //   read( sd, buffer, sizeof(buffer) );
+  //   //   //printf( "received: %s\n", buffer );
+  //   //   //printf("where you at 4\n");
+  //   // }
     
-  }
+  // }
   
   return 0;
 }
