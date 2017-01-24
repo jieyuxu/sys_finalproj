@@ -34,9 +34,9 @@ void Setup(){
   //if (strchr(character_input, 'd'))
           //character = 0;
   printf("Please Input Word: ");
-  fgets(_PUZZLE, _MAX_SIZE, stdin);
-  char* SPC = strchr(_PUZZLE, '\n');
-  *(SPC) = 0;
+  // fgets(_PUZZLE, _MAX_SIZE, stdin);
+  // char* SPC = strchr(_PUZZLE, '\n');
+  // *(SPC) = 0;
   //printf("Printing the input: <%s>\n", _PUZZLE);
 }
 

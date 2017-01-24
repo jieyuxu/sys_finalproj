@@ -175,10 +175,14 @@ int main(int argc , char *argv[]){
 
         char * cat = "Cat\0";
         Setup();
-        Display(cat);
+        fgets(buffer, sizeof(buffer), stdin);
+        char* SPC = strchr(buffer, '\n');
+        *(SPC) = 0;
+
+        Display(buffer);
         //fgets(buffer, sizeof(buffer), stdin);
         //printf("the buffer: %s", buffer);
-        strcpy(buffer, cat);
+        // strcpy(buffer, cat);
 
         
         
@@ -208,7 +212,9 @@ int main(int argc , char *argv[]){
                 //Echo back the message that came in
                 else{
                     //set the string terminating NULL byte on the end of the data read
-                    //buffer[valread] = '\0';
+                    buffer[valread] = '\0';
+                    //WHAT TO DO IF CLIENT SENDS STUFF BACK
+                    Player_Input(valread, SPC);
                     send(sd , buffer , strlen(buffer) , 0 );
                    
 		    // sub_server(sd);
