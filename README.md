@@ -7,9 +7,10 @@ HangASCIIman is the C remake of your favorite childhood game: Hangman! Instead o
 
 ##Ohhh...so how do you use it?
 HangASCIIman runs without dependencies or external libraries so you do not need to install anything in advance.
+
 1. Download or clone this github repository. If you've downloaded this repo, make sure to unzip.
 2. If this is the first time ever playing this game, simply compile it by typing ```$make```
-* Psssttt....You can get rid of those ~ or .o files using ```$make clean```
+  * Psssttt....You can get rid of those ~ or .o files using ```$make clean```
 3. Start a server by typing in ```./server```. 
 4. Start a client by typing in ```./client```. 
 5. Type a word into ```./server``` for your friend to start guessing.
