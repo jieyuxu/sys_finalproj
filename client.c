@@ -35,6 +35,7 @@ int main( int argc, char *argv[] ) {
     fgets( buffer, sizeof(buffer), stdin );
     char *p = strchr(buffer, '\n');
     *p = 0;
+    send(sd, buffer, 200, 0);
 
    // printf("where you at 1\n");
     //Player_Input(buffer, cat);

@@ -106,8 +106,16 @@ int main(int argc , char *argv[]){
       
     //accept the incoming connection
     addrlen = sizeof(address);
-    puts("Waiting for connections ...");
     clients = 0;
+
+    Setup();
+    fgets(buffer, 100, stdin);
+    char * SPC = strchr(buffer, '\n');
+    *(SPC) = 0;
+    printf("spc: %s", SPC);
+    printf("buffer: %s\n", buffer);
+    puts("Waiting for connections ...");
+
     while(TRUE) {
         //clear the socket set
         FD_ZERO(&readfds);
@@ -173,11 +181,7 @@ int main(int argc , char *argv[]){
 	    
         }
 
-        char * cat = "Cat\0";
-        Setup();
-        fgets(buffer, sizeof(buffer), stdin);
-        char* SPC = strchr(buffer, '\n');
-        *(SPC) = 0;
+        //no more adding
 
         Display(buffer);
         //fgets(buffer, sizeof(buffer), stdin);
@@ -188,7 +192,7 @@ int main(int argc , char *argv[]){
         
         for (i = 0; i < max_clients; i++) {
             sd = client_socket[i];
-            send(sd, buffer, strlen(buffer), 0);
+            send(sd, buffer, 200, 0);
         }
         
 
@@ -214,7 +218,8 @@ int main(int argc , char *argv[]){
                     //set the string terminating NULL byte on the end of the data read
                     buffer[valread] = '\0';
                     //WHAT TO DO IF CLIENT SENDS STUFF BACK
-                    Player_Input(valread, SPC);
+                    printf("Received: %s", buffer);
+                    //Player_Input(buffer, SPC);
                     send(sd , buffer , strlen(buffer) , 0 );
                    
 		    // sub_server(sd);
