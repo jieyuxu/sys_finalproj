@@ -14,6 +14,7 @@ HangASCIIman runs without dependencies or external libraries so you do not need 
 3. Start a server by typing in ```./server```. 
 4. Start a client by typing in ```./client```. 
 5. Type a word into ```./server``` for your friend to start guessing.
-*Note: Your downloaded/cloned repo should contain: ```selectserv.c client.c makefile networking.c networking.h executioner.c executioner.h```
+
+* Note: Your downloaded/cloned repo should contain: ```selectserv.c client.c makefile networking.c networking.h executioner.c executioner.h```
 
 ##Known Bugs
