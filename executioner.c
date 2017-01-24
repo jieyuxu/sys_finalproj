@@ -17,9 +17,8 @@ void setPuzzle(char * c){
   strcpy(_PUZZLE, c);
 }
 
-void Setup(){
-  int i;
-   printf(" \n \
+void Title(){
+  printf(" \n \
  ██░ ██  ▄▄▄      ███▄    █   ▄████     ▄▄▄        ██████ ▄████▄   ██▓ ██▓ ███▄ ▄███▓ ▄▄▄      ███▄    █\n \ 
 ▓██░ ██▒▒████▄    ██ ▀█   █  ██▒ ▀█▒   ▒████▄    ▒██    ▒▒██▀ ▀█  ▓  ▒▓  ▒▓██▒▀█▀ ██▒▒████▄    ██ ▀█   █ \n \
 ▒██▀▀██░▒██  ▀█▄ ▓██  ▀█ ██▒▒██░▄▄▄░   ▒██  ▀█▄  ░ ▓██▄  ▒▓█    ▄ ▒██▒▒██▒▓██    ▓██░▒██  ▀█▄ ▓██  ▀█ ██▒\n \
@@ -30,6 +29,10 @@ void Setup(){
  ░  ░░ ░  ░   ▒     ░   ░ ░ ░ ░   ░      ░   ▒   ░  ░  ░ ░         ▒ ░ ▒ ░░      ░     ░   ▒     ░   ░ ░ \n \
  ░  ░  ░      ░  ░        ░       ░          ░  ░      ░ ░ ░       ░   ░         ░         ░  ░        ░ \n \
                                                          ░                                               \n");
+}
+         
+void Setup(){
+  int i;
   //printf("Would you like to kill a man? Or a dog? \n \t \t (Press m)   (Press d)");
   //fgets(character_input, 5, stdin);
   //if (strchr(character_input, 'd'))
@@ -38,10 +41,6 @@ void Setup(){
   fgets(_PUZZLE, _MAX_SIZE, stdin);
   char* SPC = strchr(_PUZZLE, '\n');
   *(SPC) = 0;
-
-  //  for(i = 0; _PUZZLE[i]; i++){
-  //_PUZZLE[i] = tolower(_PUZZLE[i]);
-  //}
 }
 
 void endGame(){
