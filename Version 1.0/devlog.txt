@@ -48,6 +48,11 @@ miaO -- 2017-01-22 11:24 PM
 amyX -- 2017-01-22 11:40 PM
 - Implemented basic code for completely new server using select and fdsets to accept multiple clients
 
+miaO & amyX & shaikA -- 2017-01-23 5:00 PM (Dojo)
+- Started implementing new server to suit multiple clients
+- Rewrote server into selectserv to suit networking purposes
+- Adjusted executioner.c (the game) for compatability to socket connections
+
 amyX -- 2017-01-23 8:05 PM
 - Fixed makefile that didn't correctly make the client
 
@@ -69,3 +74,6 @@ amyX -- 2017-01-23 10:59 PM
 
 amyX -- 2017-01-23 11:16 PM
 - Fixed display problem for client. not yet for server
+
+miaO -- 2017-01-24 1:41 AM
+- Removed all extraneous comments and files
