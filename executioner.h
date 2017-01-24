@@ -11,7 +11,7 @@ int Player_Input();
 void Display_Word();
 int Check_Word();
 void Display();
-int checkWin();
+int checkWin(int option);
 
 
 #endif
