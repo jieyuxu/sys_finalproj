@@ -124,9 +124,6 @@ int Player_Input( char * j){
   char BUFFER[100];
   strcpy(BUFFER, j);                                                                                                                                                                                                                                                                                                                                                    
 
-  if (isupper(BUFFER[0]))
-    BUFFER[0] = tolower(BUFFER[0]);
-
   BUFFER[1] = 0;
   char * puzzle = _PUZZLE;
 
