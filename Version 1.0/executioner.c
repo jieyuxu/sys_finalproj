@@ -44,7 +44,7 @@ void endGame(){
   printf("\nASCII MAN'S HEAD WAS CHOPPED OFF. SHAME ON YOU. GET OUT OF HERE!\n");
   printf("ASCII Man whispers: I will haunt you from the deadddddd\n");
   printf("The word was: %s \nExiting...\n", _PUZZLE);
-  exit(0);
+  // exit(0);
 }
 
 
@@ -258,15 +258,35 @@ int Check_Word(){
 
 
 void Display(){
+  printf("\n\n++==THIS IS THE HANG ASCII MAN==++\n\n");
   Display_Man(GRIM_REAPER);
+  printf("\nLetters Left:\n");
   Display_Word();
+  printf("\n");
 }
 
 int checkWin(char * ans, char * bank){
   if(Check_Word(ans, bank)){
-    //Display();
+    Display();
     printf("\nYOU WIN!!! ASCII Man lives for another day. That is... until the next game~ ;)\nExiting...\n");
     return 0;
+  }
+  if(GRIM_REAPER == 7){
+    printf("\nYOU LOSE!!! ASCII Man dies. Will he live the next game??? ;)\nExiting...\n");
+    return 0;
+  }
+  return 1;
+}
+
+int checkWinServer(char * ans, char * bank){
+  if(Check_Word(ans, bank)){
+    Display();
+     printf("\nYOU LOSE!!! ASCII Man lives for another day. That is... until the next game~ ;)\nExiting...\n");
+     exit(0);
+  }
+  if(GRIM_REAPER == 7){
+    printf("\nYOU WIN!!! ASCII Man dies. Will he live the next game??? ;)\nExiting...\n");
+    exit(0);
   }
   return 1;
 }
