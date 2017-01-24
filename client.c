@@ -38,7 +38,7 @@ int main( int argc, char *argv[] ) {
   
   
  
-  while (checkWin()) {
+  while (checkWin(character)) {
     Display(character);
     printf("Enter Letter: ");
     fgets( buffer, sizeof(buffer), stdin );
