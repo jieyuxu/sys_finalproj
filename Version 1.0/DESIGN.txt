@@ -1,0 +1,69 @@
+============================
+DW: APPROVED
+============================
+
+
+
+Team ChopChop: Shaik Abiden, Amy Xu, Mia O’ Brien
+
+
+Problem/Description: 
+Our project will be a multiplayer Hangman. The game ranges from one to four players. The appointed gamemaster of each round will input a word and the others will guess letter by letter. I’m assuming you know how hangman works. Each time a letter guessed is incorrect, a limb will be chopped off of a little ascii man from legs to head. Please save him before he gets beheaded.  
+
+
+User Interface:
+Once the program runs, the user running (host) it will be prompted to start a new game (yes or no). Once he/she is prompted, he/she can choose how many people they want in their game room (up to 4). The game cannot start without at least two people. There will be a waiting screen which will go away either when the host starting the game chooses to start (regardless of when the room is full, but must have at least one other player) or the room becomes full. 
+
+
+Once the game starts, the host will choose a phrase/word for the other players to guess. Once he/she does so, an ascii man will appear, pictured below.
+ O
+\|/
+ |
+/ \
+One of the players will see a prompt asking him/her whether he/she wants to guess a letter or the entire phrase/word. If he/she guesses a letter correctly, ascii man will not lose a limb. Otherwise, one of ascii man’s precious limbs will be chopped off. As such:
+ O
+\|/
+ |
+/  
+
+Each time a limb is disemboweled from the man, he will say a line of dialogue directed at the user. Ex: “My leg got cut off man! HELP!” There will be no shown record of what letters have been guessed so far, so if a player repeats a letter guessed, it will be counted as incorrect. At any time in the game, the guessers are allowed to attempt to guess the whole phrase, but will be penalized as such.
+
+
+The players’ screens will take turns showing the guessing prompt until:
+1. Ascii man’s head is chopped off.
+2. They guess the phrase/word
+
+
+If ascii man dies, the host’s screen will show a winning message while other the other players’ screens will show a losing message. Otherwise, the person who correctly guessed the phrase will have a winning screen while the others have losing screens. He/she becomes the new “host.”
+
+
+Then a prompt will appear on all screens asking the users if they want to play another round. If a user selects no, then the host can choose to wait for all the player spots to fill up (he/she must wait if he/she is the only player left) or start the game immediately (as long as there are more than 2 players including the host). Then the cycle repeats. 
+
+
+Technical Design:
+* Topics that we will use: Aside from basic function writing in C, the project will deal with forking and creating multiple child processes as the game would allow for more than just one player to connect and play along. The project will include networking layers and server/client checking through handshakes. Also, it would incorporate semaphores to prevent one player from just spamming letters and instead wait for their turn to add a letter. to try and complete the puzzle. In addition, we will used shared memory to keep track of the letters that have been already used and the visual representation of the hangman as he slowly gets sliced away.
+* Breakdown of the Project Roles:
+   * Amy Xu: Project Manager
+      * Manages the group’s schedule and progress
+      * Assigns roles and oversees the project
+      * Codes wherever I’m needed
+      * Resolves conflicts
+   * Mia O’ Brien: Semaphore/Shared Memory/partial algorithm backend
+      * Responsible for creating the semaphore gateway for letting in players, making the shared memory to store the phrase/word for hangman
+      * Writes the algorithm for checking the guessed answer to the phrase/word
+      * Helps Shaik write the networking algorithm
+   * Shaik Abiden: Networking Algorithm backend
+      * Will be responsible for writing a good part of the algorithm for networking the players and prompting them
+
+* Data Structures to be Used: We plan on using general plain text files to store any of the data in the game and parsing through those text files to determine what happens in the game. We can store the actual sentence that we are trying to figure out in a shared memory array of chars to keep track of the string. Also, we can store points in a text file that just has a player name and a number next to it to hold their score. We can have a semaphore that becomes 1 for the player whose turn it is and becomes 0 after they make their move. In order to keep track of the players, we can have a Queue-type data structure that pops off the user that just went and adds them back to the end of the Queue, effectively cycling through the players.
+
+* What Algorithms Will be Used For: One of the main algorithms that the program will include is a function that takes in input from the host to generate the sentence for the game, or use one of the words in the single player word bank. Another function that the program will include is the read function that records the letter the player inputs. The game by nature will involve quite a bit of String comparison functions that check both single characters given by players first with the pool of used letters and then the sentence that they are trying to solve and also whole sentences if the player is trying to solve the sentence. Aside from that there will be an algorithm that parses through the data which stores the hangman and determines which part of him to chop off. There will also be a simple display function that will display both the hangman and the remaining words of the puzzle. Aside from those, there will be logistical functions that handle the server/client handshakes, functions that check the semaphore when trying to read the input, and functions that go around and modify the data for the display once a correct or incorrect letter is given.
+
+
+Timeline:
+1. Jan. 5: Submit design document
+2. Jan. 9: Reading in input/output to start a new game (A simple prototype will be made first without networking). 
+3. Jan. 12: Finish guess checking algorithm and start on semaphores and shared memory.
+4. Jan. 17: The game prototype (without networking) works. Start networking multiplayer aspect.
+5. Jan. 19: Networking multiplayer finished.
+6. Jan. 20-23: Testing on Linux computers, debugging, implementing extra features if time permits
