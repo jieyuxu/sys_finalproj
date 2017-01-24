@@ -46,4 +46,21 @@ miaO -- 2017-01-22 11:24 PM
 - added Ascii dog appendage losses and dialogue prompts
 
 amyX -- 2017-01-22 11:40 PM
-- Implemented basic code for server to accept multiple clients
+- Implemented basic code for completely new server using select and fdsets to accept multiple clients
+
+amyX -- 2017-01-23 8:05
+- Fixed makefile that didn't correctly make the client
+
+amyX -- 2017-01-23 9:02
+- Finished implemented new server
+- Modified client to suit the needs of the new server
+- Got basic data sending and receiving to work with new server
+- Executor.c's various fxns were changed to accommodate a server that can now be accessed by clients on other ip addresses
+	- Various parameters were added to the display fxns
+	- fgets was taken out of setup
+
+amyX-- 2017-01-23 10:08
+- Got client to display word bank
+- Got the server to recognize when the client exits
+- Client now stores the word bank 
+
