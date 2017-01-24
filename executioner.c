@@ -10,8 +10,6 @@ char _PUZZLE[100];
 char _LETTER_BANK[25];
 int _LETTER_COUNTER = 0;
 int GRIM_REAPER = 0;
-char character_input[5];
-int character = 1;
 
 void setPuzzle(char * c){
   strcpy(_PUZZLE, c);
@@ -33,10 +31,6 @@ void Title(){
          
 void Setup(){
   int i;
-  //printf("Would you like to kill a man? Or a dog? \n \t \t (Press m)   (Press d)");
-  //fgets(character_input, 5, stdin);
-  //if (strchr(character_input, 'd'))
-          //character = 0;
   printf("Please Input Word: ");
   fgets(_PUZZLE, _MAX_SIZE, stdin);
   char* SPC = strchr(_PUZZLE, '\n');
@@ -203,9 +197,17 @@ int Check_Word(){
 
 
 
-void Display(){
-  printf("\n\n++==THIS IS THE HANG ASCII MAN==++\n\n");
-  Display_Man(GRIM_REAPER);
+void Display(int option){
+  
+  if (option){ //default -> man
+    printf("\n\n++==THIS IS THE HANG ASCII MAN==++\n\n");  
+    Display_Man(GRIM_REAPER);
+  }
+  else{ //dog
+    printf("\n\n++==THIS IS THE HANG ASCII DOG==++\n\n");  
+    Display_Dog(GRIM_REAPER);  
+  }
+  
   printf("\nLetters Left:\n");
   Display_Word();
   printf("\n");
